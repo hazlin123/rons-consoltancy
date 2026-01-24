@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: ScholarPath API (dev)
+  version: 0.1.0
+servers:
+  - url: http://localhost:4000
+paths:
+  /auth/login:
+    post:
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+  /scholarships:
+    get:
+      tags: [Scholarships]
+      responses:
+        '200':
+          description: List
+    post:
+      tags: [Scholarships]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+  /applications:
+    get:
+      tags: [Applications]
+      responses:
+        '200':
+          description: List
+    post:
+      tags: [Applications]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created

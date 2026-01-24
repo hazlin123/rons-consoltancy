@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Theme: 'Travelly' Inspiration (Indigo & Coral) */
+  --primary: 246 70% 58%;
+  /* #584ADC - Indigo */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 14 100% 63%;
+  /* #FF6F42 - Coral/Orange */
+  --secondary-foreground: 0 0% 100%;
+
+  --accent: 190 90% 45%;
+  /* #14B8A6 - Teal */
+  --accent-foreground: 0 0% 100%;
+
+  --background: 210 40% 98%;
+  /* #F8FAFC - Softest Slate */
+  --foreground: 222.2 84% 4.9%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 246 70% 58%;
+
+  --radius: 1rem;
+  /* Default 16px */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Utilities for Travelly aesthetic */
+.rounded-3xl {
+  border-radius: 1.5rem;
+  /* 24px */
+}
+
+.rounded-4xl {
+  border-radius: 2rem;
+  /* 32px */
+}
+
+.shadow-soft {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-hover {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

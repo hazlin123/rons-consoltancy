@@ -1,0 +1,6 @@
+lovable==REMOVED
+lovable.dev==REMOVED
+lovable-tagger==REMOVED
+"https://lovable.dev/opengraph-image-p98pqg.png"=="REMOVED"
+"Lovable"=="REMOVED"
+"lovable.dev/opengraph-image-p98pqg.png"=="REMOVED"
