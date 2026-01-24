@@ -105,7 +105,7 @@ export const ApplicationForm = ({ scholarshipTitle }: { scholarshipTitle: string
                                     <FormItem>
                                         <FormLabel className="text-primary font-semibold">Phone Number</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="+254 700 000 000" className="h-12 bg-slate-50" {...field} />
+                                            <Input placeholder="+254 720 494 322" className="h-12 bg-slate-50" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

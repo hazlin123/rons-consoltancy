@@ -66,12 +66,12 @@ export const Hero = () => {
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="tel:+254712345678">
+            <a href="tel:+254720494322">
               <Button size="xl" className="rounded-2xl h-16 px-10 bg-primary text-white shadow-soft transition-all duration-300 hover:shadow-hover hover:scale-[1.02] active:scale-[0.98] gap-3">
                 <Phone className="w-6 h-6" /> Call Now
               </Button>
             </a>
-            <a href="https://wa.me/254712345678" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/254720494322" target="_blank" rel="noopener noreferrer">
               <Button size="xl" variant="ghost" className="rounded-2xl h-16 px-10 font-bold group flex items-center gap-3 bg-white/50 backdrop-blur-sm border border-gray-100 transition-all duration-300 hover:shadow-hover hover:scale-[1.02]">
                 <MessageCircle className="w-6 h-6 text-green-500" /> WhatsApp Us
               </Button>

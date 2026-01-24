@@ -42,23 +42,23 @@ export const Contact = () => {
               </p>
 
               <div className="space-y-8">
-                <a href="mailto:hello@scholarpath.ke" className="flex items-center gap-6 group cursor-pointer">
+                <a href="mailto:ronsfuturebridge7@gmail.com" className="flex items-center gap-6 group cursor-pointer">
                   <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-all duration-300">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-widest text-secondary font-black mb-1">Email Us</div>
-                    <div className="text-lg font-bold">hello@scholarpath.ke</div>
+                    <div className="text-lg font-bold">ronsfuturebridge7@gmail.com</div>
                   </div>
                 </a>
 
-                <a href="tel:+254712345678" className="flex items-center gap-6 group cursor-pointer">
+                <a href="tel:+254720494322" className="flex items-center gap-6 group cursor-pointer">
                   <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-all duration-300">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-widest text-secondary font-black mb-1">Call Us</div>
-                    <div className="text-lg font-bold">+254 712 345 678</div>
+                    <div className="text-lg font-bold">+254 720 494 322</div>
                   </div>
                 </a>
 
@@ -68,13 +68,13 @@ export const Contact = () => {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-widest text-secondary font-black mb-1">Office</div>
-                    <div className="text-lg font-bold">Westlands, Nairobi</div>
+                    <div className="text-lg font-bold">Rieti Building, 3rd Floor, Room 32, Uganda Road</div>
                   </div>
                 </div>
               </div>
 
               <div className="mt-16 pt-8 border-t border-white/10">
-                <a href="https://wa.me/254712345678" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/254720494322" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" className="w-full h-16 rounded-2xl border-white/20 text-white hover:bg-white hover:text-primary font-bold gap-3 text-base group shadow-lg shadow-black/5 transition-all">
                     <MessageCircle className="w-6 h-6" /> WhatsApp Support
                   </Button>

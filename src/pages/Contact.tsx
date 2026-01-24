@@ -35,14 +35,14 @@ export default function Contact() {
                             </div>
                             <h4 className="text-xl font-bold text-primary mb-2">Direct Call</h4>
                             <p className="text-slate-500 mb-4 text-sm">Monday - Friday, 9:00 AM to 6:00 PM (EAT).</p>
-                            <a href="tel:+254700000000" className="text-primary font-bold hover:underline">+254 700 000 000</a>
+                            <a href="tel:+254720494322" className="text-primary font-bold hover:underline">+254 720 494 322</a>
                         </div>
                         <div className="p-8">
                             <div className="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
                                 <MapPin className="w-8 h-8" />
                             </div>
                             <h4 className="text-xl font-bold text-primary mb-2">Visit Office</h4>
-                            <p className="text-slate-500 mb-4 text-sm">Westlands Office Park, Tower A, 4th Floor, Nairobi, Kenya.</p>
+                            <p className="text-slate-500 mb-4 text-sm">Rieti Building, 3rd Floor, Room 32, Uganda Road.</p>
                             <a href="#" className="text-primary font-bold hover:underline">Get Directions</a>
                         </div>
                     </div>
