@@ -14,6 +14,9 @@ export default defineConfig(({ mode }) => ({
   },
   // Disable React Fast Refresh to avoid HMR compatibility warnings
   plugins: [react({ fastRefresh: false })],
+  build: {
+    chunkSizeWarningLimit: 1000,
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
