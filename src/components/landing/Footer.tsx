@@ -28,15 +28,14 @@ const footerLinks = {
       { name: "Our Team", href: "#" },
       { name: "Success Stories", href: "#testimonials" },
       { name: "Careers", href: "#" },
-      { name: "Contact", href: "#contact" },
     ],
   },
-  legal: {
-    title: "Legal",
+  contact: {
+    title: "Get In Touch",
     links: [
-      { name: "Privacy Policy", href: "#" },
-      { name: "Terms of Service", href: "#" },
-      { name: "Cookie Policy", href: "#" },
+      { name: "Rieti Building, 3rd Floor, Room 32, Uganda Road", href: "#" },
+      { name: "+254 720 494 322", href: "tel:+254720494322" },
+      { name: "ronsfuturebridge7@gmail.com", href: "mailto:ronsfuturebridge7@gmail.com" },
     ],
   },
 };
@@ -54,23 +53,23 @@ export const Footer = () => {
     <footer className="bg-white text-foreground border-t border-gray-100">
       {/* Main Footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <a href="/" className="flex items-center gap-2 mb-8 group">
               <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
-                <GraduationCap className="w-7 h-7 text-white" />
+                <GraduationCap className="w-7 h-7 text-secondary" />
               </div>
               <div className="flex flex-col">
-                <span className="font-black text-2xl tracking-tighter leading-none">
-                  Rons Consultancy
+                <span className="font-black text-2xl tracking-tighter leading-none text-slate-900 italic">
+                  Rons Future Bridge
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-widest text-primary">
                   The Journey Begins
                 </span>
               </div>
             </a>
-            <p className="text-muted-foreground mb-8 max-w-sm font-medium leading-relaxed">
+            <p className="text-muted-foreground mb-8 max-w-sm font-medium leading-relaxed italic">
               Empowering the next generation of Kenyan leaders through simplified access to world-class education and expert IELTS support.
             </p>
             {/* Social Links */}
@@ -91,7 +90,7 @@ export const Footer = () => {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([key, section]) => (
             <div key={key}>
-              <h4 className="font-black text-sm uppercase tracking-widest mb-6 text-foreground">
+              <h4 className="font-black text-sm uppercase tracking-widest mb-6 text-primary italic">
                 {section.title}
               </h4>
               <ul className="space-y-4">
@@ -99,7 +98,7 @@ export const Footer = () => {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium break-words leading-snug block"
                     >
                       {link.name}
                     </a>
@@ -116,7 +115,7 @@ export const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
             <p className="text-muted-foreground font-medium">
-              © {new Date().getFullYear()} Rons IELTS Consultancy. <span className="hidden sm:inline">Crafted for Excellence.</span>
+              © {new Date().getFullYear()} Rons Future Bridge. <span className="hidden sm:inline">Crafted for Excellence.</span>
             </p>
             <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-soft border border-gray-100">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />

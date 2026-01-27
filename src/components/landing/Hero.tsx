@@ -57,7 +57,7 @@ export const Hero = () => {
 
           {/* Mega Headline */}
           <h1 className="max-w-5xl mx-auto text-6xl md:text-8xl font-black tracking-tight text-slate-900 mb-8 leading-[1.05]">
-            Achieve Success <br /> With <span className="text-primary italic">Rons Consultancy</span>
+            Achieve Success <br /> With <span className="text-primary italic">Rons Future Bridge</span>
           </h1>
 
           {/* Sub-headline */}

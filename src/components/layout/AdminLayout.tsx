@@ -52,7 +52,7 @@ export const AdminLayout = () => {
                             {isSidebarOpen && (
                                 <div className="flex flex-col">
                                     <span className="font-black text-lg tracking-tighter leading-none text-secondary">ADMIN</span>
-                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest uppercase">Control Center</span>
+                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest uppercase italic">Future Bridge</span>
                                 </div>
                             )}
                         </Link>
@@ -67,8 +67,8 @@ export const AdminLayout = () => {
                                     key={item.label}
                                     to={item.href}
                                     className={`flex items-center gap-4 px-5 py-4 rounded-2xl transition-all group relative overflow-hidden ${isActive
-                                            ? "bg-secondary text-primary font-bold shadow-xl shadow-black/20"
-                                            : "text-white/60 hover:text-secondary hover:bg-white/5"
+                                        ? "bg-secondary text-primary font-bold shadow-xl shadow-black/20"
+                                        : "text-white/60 hover:text-secondary hover:bg-white/5"
                                         }`}
                                 >
                                     <item.icon className={`w-6 h-6 shrink-0 transition-colors ${isActive ? "text-primary" : "group-hover:text-secondary"}`} />

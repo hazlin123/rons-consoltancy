@@ -26,7 +26,7 @@ export const Header = () => {
           </div>
           <div className="hidden sm:flex flex-col">
             <span className="font-extrabold text-xl tracking-tight text-slate-900 leading-none italic">
-              Rons Consultancy
+              Rons Future Bridge
             </span>
             <span className="text-[10px] uppercase tracking-widest text-primary font-black">
               IELTS Experts

@@ -51,8 +51,8 @@ export const PortalLayout = () => {
                             </div>
                             {isSidebarOpen && (
                                 <div className="flex flex-col">
-                                    <span className="font-black text-sm tracking-tighter leading-none text-secondary">RON'S</span>
-                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest italic lowercase">IELTS Portal</span>
+                                    <span className="font-black text-sm tracking-tighter leading-none text-secondary uppercase">RONS</span>
+                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest italic">Future Bridge</span>
                                 </div>
                             )}
                         </Link>
@@ -67,8 +67,8 @@ export const PortalLayout = () => {
                                     key={item.label}
                                     to={item.href}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${isActive
-                                            ? "bg-secondary text-primary font-bold shadow-lg shadow-black/10"
-                                            : "text-white/60 hover:text-secondary hover:bg-white/5"
+                                        ? "bg-secondary text-primary font-bold shadow-lg shadow-black/10"
+                                        : "text-white/60 hover:text-secondary hover:bg-white/5"
                                         }`}
                                 >
                                     <item.icon className={`w-5 h-5 shrink-0 ${isActive ? "text-primary" : "group-hover:text-secondary"}`} />
