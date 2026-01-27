@@ -10,7 +10,8 @@ import {
     Search,
     ChevronRight,
     Menu,
-    X
+    X,
+    Shield
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -20,11 +21,11 @@ export const AdminLayout = () => {
     const { user, logout } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const menuItems = [
         { icon: LayoutDashboard, label: "Overview", href: "/admin/dashboard" },
-        { icon: Users, label: "Student Management", href: "/admin/management" },
+        { icon: Users, label: "Students", href: "/admin/management" },
         { icon: GraduationCap, label: "Scholarships", href: "/admin/scholarships" },
         { icon: Settings, label: "Settings", href: "/admin/settings" },
     ];
@@ -35,118 +36,127 @@ export const AdminLayout = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-slate-50 font-sans">
+        <div className="flex min-h-screen bg-[#F9FAFB] font-sans">
 
-            {/* Sidebar Desktop */}
-            <aside className="hidden lg:flex w-72 bg-primary flex-col border-r border-white/10 text-white">
-                <div className="p-8 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center">
-                        <GraduationCap className="w-6 h-6 text-primary" />
+            {/* Admin Sidebar - Dark Red Palette */}
+            <aside
+                className={`fixed left-0 top-0 h-screen bg-[#7F1D1D] text-white z-50 transition-all duration-300 border-r border-white/5 shadow-2xl ${isSidebarOpen ? "w-72" : "w-20"}`}
+            >
+                <div className="flex flex-col h-full">
+                    {/* Sidebar Header */}
+                    <div className="h-24 flex items-center px-6 border-b border-white/5">
+                        <Link to="/admin/dashboard" className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-2xl bg-[#FEFCE8] flex items-center justify-center shrink-0 shadow-lg shadow-black/20">
+                                <Shield className="w-6 h-6 text-[#7F1D1D]" />
+                            </div>
+                            {isSidebarOpen && (
+                                <div className="flex flex-col">
+                                    <span className="font-black text-lg tracking-tighter leading-none text-[#FEFCE8]">ADMIN</span>
+                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest">Control Center</span>
+                                </div>
+                            )}
+                        </Link>
                     </div>
-                    <span className="font-display font-bold text-xl italic leading-none">Rons IELTS</span>
-                </div>
 
-                <nav className="flex-grow px-4 space-y-2 py-6">
-                    {menuItems.map((item) => {
-                        const isActive = location.pathname === item.href;
-                        return (
-                            <Link
-                                key={item.label}
-                                to={item.href}
-                                className={`flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-200 group ${isActive
-                                    ? "bg-secondary text-primary font-bold shadow-lg shadow-secondary/10"
-                                    : "text-primary-foreground/60 hover:text-white hover:bg-white/5"
-                                    }`}
-                            >
-                                <item.icon className={`w-5 h-5 ${isActive ? "text-primary" : "group-hover:text-secondary"} transition-colors`} />
-                                {item.label}
-                                {isActive && <ChevronRight className="ml-auto w-4 h-4" />}
-                            </Link>
-                        );
-                    })}
-                </nav>
+                    {/* Navigation Items */}
+                    <nav className="flex-grow py-10 px-4 space-y-3">
+                        {menuItems.map((item) => {
+                            const isActive = location.pathname === item.href;
+                            return (
+                                <Link
+                                    key={item.label}
+                                    to={item.href}
+                                    className={`flex items-center gap-4 px-5 py-4 rounded-2xl transition-all group relative overflow-hidden ${isActive
+                                            ? "bg-[#FEFCE8] text-[#7F1D1D] font-bold shadow-xl shadow-black/20"
+                                            : "text-white/60 hover:text-[#FEFCE8] hover:bg-white/5"
+                                        }`}
+                                >
+                                    <item.icon className={`w-6 h-6 shrink-0 transition-colors ${isActive ? "text-[#7F1D1D]" : "group-hover:text-[#FEFCE8]"}`} />
+                                    {isSidebarOpen && (
+                                        <span className="text-sm uppercase tracking-wider font-extrabold">{item.label}</span>
+                                    )}
+                                    {isActive && isSidebarOpen && (
+                                        <div className="ml-auto w-1.5 h-1.5 rounded-full bg-[#7F1D1D]" />
+                                    )}
+                                </Link>
+                            );
+                        })}
+                    </nav>
 
-                <div className="p-6 mt-auto border-t border-white/5">
-                    <div className="bg-white/5 rounded-2xl p-4 flex items-center gap-3">
-                        <Avatar className="h-10 w-10 border-2 border-secondary/30">
-                            <AvatarFallback className="bg-secondary text-primary font-bold">AD</AvatarFallback>
-                        </Avatar>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold truncate">{user?.name || "Admin User"}</p>
-                            <p className="text-[10px] text-primary-foreground/40 uppercase tracking-widest font-bold">Senior Auditor</p>
+                    {/* Sidebar Footer */}
+                    <div className="p-6 border-t border-white/5">
+                        <div className={`flex items-center gap-4 bg-black/20 p-4 rounded-[1.5rem] border border-white/5 ${!isSidebarOpen && "justify-center"}`}>
+                            <Avatar className="h-10 w-10 border-2 border-[#FEFCE8]/30 shrink-0">
+                                <AvatarFallback className="bg-[#FEFCE8] text-[#7F1D1D] font-bold">{user?.name?.charAt(0) || "A"}</AvatarFallback>
+                            </Avatar>
+                            {isSidebarOpen && (
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-xs font-black text-white truncate">{user?.name || "Admin User"}</p>
+                                    <p className="text-[9px] text-[#FEFCE8]/60 uppercase tracking-widest font-black">System Admin</p>
+                                </div>
+                            )}
+                            {isSidebarOpen && (
+                                <button
+                                    onClick={handleLogout}
+                                    className="p-2 bg-white/5 hover:bg-red-500/20 rounded-xl text-red-400 transition-colors"
+                                >
+                                    <LogOut className="w-4 h-4" />
+                                </button>
+                            )}
                         </div>
-                        <button
-                            onClick={handleLogout}
-                            className="p-2 hover:bg-red-500/20 rounded-lg text-red-400 transition-colors"
-                            title="Logout"
-                        >
-                            <LogOut className="w-4 h-4" />
-                        </button>
                     </div>
                 </div>
             </aside>
 
             {/* Main Content Area */}
-            <div className="flex-1 flex flex-col h-screen overflow-hidden">
-
-                {/* Top Header */}
-                <header className="h-20 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-20">
-                    <div className="flex items-center gap-4 lg:hidden">
-                        <button onClick={() => setIsMobileMenuOpen(true)}>
-                            <Menu className="w-6 h-6 text-primary" />
-                        </button>
-                        <span className="font-display font-bold text-xl italic text-primary">Rons IELTS</span>
-                    </div>
-
-                    <div className="hidden md:flex items-center bg-slate-50 border border-slate-100 rounded-xl px-4 py-2 w-96 group focus-within:ring-2 ring-secondary/20 transition-all">
-                        <Search className="w-4 h-4 text-slate-400" />
-                        <input placeholder="Global search..." className="bg-transparent border-none focus:ring-0 text-sm w-full ml-3" />
-                    </div>
-
+            <div className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "ml-72" : "ml-20"}`}>
+                {/* Admin Top Header - Cream Accents */}
+                <header className="h-24 bg-white/80 backdrop-blur-xl border-b border-[#F1F5F9] sticky top-0 z-40 px-10 flex items-center justify-between">
                     <div className="flex items-center gap-6">
-                        <button className="relative p-2 text-slate-400 hover:text-primary transition-colors">
-                            <Bell className="w-5 h-5" />
-                            <span className="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-white" />
+                        <button
+                            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                            className="p-3 bg-[#F1F5F9] text-[#7F1D1D] rounded-2xl hover:bg-[#FEFCE8] transition-colors shadow-sm"
+                        >
+                            {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
-                        <div className="h-8 w-px bg-slate-100 mx-2 hidden sm:block" />
-                        <div className="sm:flex flex-col items-end hidden">
-                            <span className="text-sm font-bold text-primary">{user?.name}</span>
-                            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter">Admin Portal</span>
+                        <div className="h-8 w-px bg-slate-200 hidden md:block" />
+                        <div className="hidden lg:flex flex-col">
+                            <h2 className="text-lg font-black text-[#7F1D1D] tracking-tight leading-none italic uppercase">Dashboard</h2>
+                            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Management Overview</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-8">
+                        <div className="hidden md:flex items-center bg-[#F9FAFB] border border-[#F1F5F9] rounded-2xl px-5 py-3 w-[450px] shadow-sm focus-within:ring-2 ring-[#7F1D1D]/5 transition-all">
+                            <Search className="w-4 h-4 text-slate-400" />
+                            <input
+                                placeholder="Search students, scholarships, operations..."
+                                className="bg-transparent border-none focus:ring-0 text-xs w-full ml-4 font-bold text-slate-600 uppercase tracking-wider"
+                            />
+                        </div>
+
+                        <div className="flex items-center gap-4">
+                            <button className="relative p-3 bg-[#F1F5F9] text-slate-400 hover:text-[#7F1D1D] hover:bg-[#FEFCE8] rounded-2xl transition-all shadow-sm">
+                                <Bell className="w-5 h-5" />
+                                <span className="absolute top-3 right-3 w-2.5 h-2.5 bg-[#7F1D1D] rounded-full border-2 border-white" />
+                            </button>
+                            <div className="h-10 w-px bg-slate-200" />
+                            <Link to="/">
+                                <Button variant="ghost" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-[#7F1D1D] hover:bg-[#FEFCE8] rounded-2xl px-6">
+                                    Live Site
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </header>
 
                 {/* Content Page Outlet */}
-                <main className="flex-1 overflow-y-auto p-8 lg:p-12">
-                    <div className="max-w-7xl mx-auto mb-20">
+                <main className="p-10 lg:p-14">
+                    <div className="max-w-[1600px] mx-auto">
                         <Outlet />
                     </div>
                 </main>
             </div>
-
-            {/* Mobile Menu Overlay */}
-            {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-50 lg:hidden">
-                    <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-                    <aside className="absolute top-0 left-0 bottom-0 w-72 bg-primary text-white p-8">
-                        <div className="flex justify-between items-center mb-12">
-                            <span className="font-display font-bold text-xl italic">Rons IELTS</span>
-                            <button onClick={() => setIsMobileMenuOpen(false)}><X className="w-6 h-6" /></button>
-                        </div>
-                        <nav className="space-y-4">
-                            {menuItems.map(item => (
-                                <Link key={item.label} to={item.href} className="flex items-center gap-4 p-4 hover:bg-white/5 rounded-xl border border-transparent hover:border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
-                                    <item.icon className="w-5 h-5 text-secondary" /> {item.label}
-                                </Link>
-                            ))}
-                            <button onClick={handleLogout} className="flex items-center gap-4 p-4 text-red-400 w-full hover:bg-red-500/10 rounded-xl mt-12">
-                                <LogOut className="w-5 h-5" /> Logout
-                            </button>
-                        </nav>
-                    </aside>
-                </div>
-            )}
-
         </div>
     );
 };
