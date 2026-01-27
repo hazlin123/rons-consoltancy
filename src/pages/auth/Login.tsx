@@ -67,7 +67,7 @@ export default function Login() {
 
                 <div className="relative z-10 text-center max-w-md">
                     <GraduationCap className="w-20 h-20 text-secondary mx-auto mb-8" />
-                    <h1 className="text-5xl font-bold text-white mb-6 font-display italic">ScholarPath</h1>
+                    <h1 className="text-5xl font-bold text-white mb-6 font-display italic">Rons Future Bridge</h1>
                     <p className="text-xl text-primary-foreground/70 leading-relaxed font-light">
                         Access exclusive scholarships and expert guidance to fund your global education dreams.
                     </p>
@@ -140,13 +140,6 @@ export default function Login() {
                         Don't have an account? <Link to="/auth/register" className="text-secondary font-bold hover:underline">Register now</Link>
                     </p>
 
-                    <div className="mt-12 pt-8 border-t border-gray-50 flex flex-col items-center">
-                        <div className="text-xs text-slate-300 uppercase tracking-widest font-bold mb-4">Demo Credentials</div>
-                        <div className="flex gap-4 text-sm">
-                            <code className="bg-slate-50 px-2 py-1 rounded text-primary">admin@scholarpath.io</code>
-                            <code className="bg-slate-50 px-2 py-1 rounded text-primary">student@scholarpath.io</code>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

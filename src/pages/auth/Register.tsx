@@ -157,7 +157,7 @@ export default function Register() {
                     <GraduationCap className="w-20 h-20 text-primary mx-auto mb-8 animate-bounce-slow" />
                     <h1 className="text-4xl font-bold text-primary mb-4 font-display italic">Start Your Journey</h1>
                     <p className="text-lg text-slate-600 leading-relaxed font-light">
-                        Join 50,000+ students globally who trust ScholarPath for their education funding.
+                        Join 50,000+ students globally who trust Rons Future Bridge for their education funding.
                     </p>
 
                     <div className="mt-12 grid grid-cols-2 gap-4">
