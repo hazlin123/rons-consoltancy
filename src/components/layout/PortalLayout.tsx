@@ -37,22 +37,22 @@ export const PortalLayout = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#F8FAFC]">
-            {/* Left Sidebar */}
+        <div className="flex min-h-screen bg-[#F9FAFB] font-sans">
+            {/* Left Sidebar - Dark Red Palette */}
             <aside
-                className={`fixed left-0 top-0 h-screen bg-white border-r border-slate-200 z-50 transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-20"}`}
+                className={`fixed left-0 top-0 h-screen bg-primary text-white z-50 transition-all duration-300 border-r border-white/5 shadow-2xl ${isSidebarOpen ? "w-64" : "w-20"}`}
             >
                 <div className="flex flex-col h-full">
                     {/* Sidebar Header */}
-                    <div className="h-20 flex items-center px-6 border-b border-slate-100">
+                    <div className="h-20 flex items-center px-6 border-b border-white/5">
                         <Link to="/portal/dashboard" className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
-                                <Trophy className="w-5 h-5 text-white" />
+                            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center shrink-0 shadow-lg shadow-black/20">
+                                <Trophy className="w-5 h-5 text-primary" />
                             </div>
                             {isSidebarOpen && (
                                 <div className="flex flex-col">
-                                    <span className="font-black text-sm tracking-tighter leading-none">RON'S</span>
-                                    <span className="text-[10px] font-bold text-primary italic lowercase">IELTS Portal</span>
+                                    <span className="font-black text-sm tracking-tighter leading-none text-secondary">RON'S</span>
+                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest italic lowercase">IELTS Portal</span>
                                 </div>
                             )}
                         </Link>
@@ -67,11 +67,11 @@ export const PortalLayout = () => {
                                     key={item.label}
                                     to={item.href}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${isActive
-                                            ? "bg-primary text-white shadow-lg shadow-primary/20"
-                                            : "text-slate-500 hover:bg-slate-50 hover:text-primary"
+                                            ? "bg-secondary text-primary font-bold shadow-lg shadow-black/10"
+                                            : "text-white/60 hover:text-secondary hover:bg-white/5"
                                         }`}
                                 >
-                                    <item.icon className={`w-5 h-5 shrink-0 ${isActive ? "text-white" : "group-hover:text-primary"}`} />
+                                    <item.icon className={`w-5 h-5 shrink-0 ${isActive ? "text-primary" : "group-hover:text-secondary"}`} />
                                     {isSidebarOpen && (
                                         <span className="text-sm font-bold tracking-tight">{item.label}</span>
                                     )}
@@ -84,11 +84,11 @@ export const PortalLayout = () => {
                     </nav>
 
                     {/* Sidebar Footer */}
-                    <div className="p-4 border-t border-slate-100">
+                    <div className="p-4 border-t border-white/5">
                         <Button
                             onClick={handleLogout}
                             variant="ghost"
-                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:text-red-500 hover:bg-red-50 transition-all ${!isSidebarOpen && "justify-center px-0"}`}
+                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-red-500/20 transition-all ${!isSidebarOpen && "justify-center px-0"}`}
                         >
                             <LogOut className="w-5 h-5 shrink-0" />
                             {isSidebarOpen && <span className="text-sm font-bold tracking-tight">Log Out</span>}
@@ -100,8 +100,8 @@ export const PortalLayout = () => {
             {/* Main Content Area */}
             <div className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "ml-64" : "ml-20"}`}>
                 {/* Top Header */}
-                <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 px-8 flex items-center justify-between">
-                    <div className="flex items-center gap-4 bg-slate-100 px-4 py-2 rounded-xl w-96 border border-slate-200/50">
+                <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 px-8 flex items-center justify-between shadow-sm">
+                    <div className="flex items-center gap-4 bg-slate-50 px-4 py-2 rounded-xl w-96 border border-slate-200/50 focus-within:ring-2 ring-primary/5 transition-all shadow-inner">
                         <Search className="w-4 h-4 text-slate-400" />
                         <input
                             type="text"
@@ -112,12 +112,12 @@ export const PortalLayout = () => {
 
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
-                            <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-white hover:shadow-soft rounded-xl transition-all relative">
+                            <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-secondary/20 hover:shadow-soft rounded-xl transition-all relative">
                                 <Bell className="w-5 h-5" />
                                 <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-white" />
                             </button>
                             <Link to="/">
-                                <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-white hover:shadow-soft rounded-xl transition-all">
+                                <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-secondary/20 hover:shadow-soft rounded-xl transition-all shadow-sm">
                                     <Home className="w-5 h-5" />
                                 </button>
                             </Link>
@@ -125,14 +125,14 @@ export const PortalLayout = () => {
 
                         <div className="h-8 w-px bg-slate-200" />
 
-                        <div className="flex items-center gap-3">
-                            <div className="text-right hidden sm:block">
-                                <div className="text-sm font-black text-slate-900 leading-none mb-1">{user?.name}</div>
+                        <div className="flex items-center gap-3 border border-primary/5 p-1.5 rounded-2xl bg-slate-50 shadow-sm">
+                            <div className="text-right hidden sm:block pl-2">
+                                <div className="text-xs font-black text-slate-900 leading-none mb-1 uppercase tracking-tighter italic">{user?.name}</div>
                                 <div className="text-[10px] font-bold text-primary uppercase tracking-wider italic">Student Member</div>
                             </div>
-                            <Avatar className="h-10 w-10 border-2 border-white shadow-soft">
+                            <Avatar className="h-9 w-9 border-2 border-white shadow-soft">
                                 <AvatarImage src={user?.avatar} />
-                                <AvatarFallback className="bg-primary text-white font-bold">{user?.name?.charAt(0)}</AvatarFallback>
+                                <AvatarFallback className="bg-primary text-secondary font-bold">{user?.name?.charAt(0)}</AvatarFallback>
                             </Avatar>
                         </div>
                     </div>

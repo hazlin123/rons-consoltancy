@@ -22,7 +22,7 @@ export default function Contact() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                         <div className="p-8">
-                            <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                                 <MessageCircle className="w-8 h-8" />
                             </div>
                             <h4 className="text-xl font-bold text-primary mb-2">Support Chat</h4>

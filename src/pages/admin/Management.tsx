@@ -172,7 +172,7 @@ const StudentManagement = () => {
                     onClick={() => handleAction("Test Scores")}
                     className="h-16 rounded-2xl font-black italic gap-2 border-slate-100 hover:bg-slate-50 transition-all"
                 >
-                    <GraduationCap className="w-5 h-5 text-indigo-600" /> Update Test Scores
+                    <GraduationCap className="w-5 h-5 text-primary" /> Update Test Scores
                 </Button>
             </div>
         </div>

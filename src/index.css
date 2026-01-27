@@ -4,38 +4,41 @@
 @tailwind utilities;
 
 :root {
-  /* Theme: 'Travelly' Inspiration (Indigo & Coral) */
-  --primary: 246 70% 58%;
-  /* #584ADC - Indigo */
-  --primary-foreground: 0 0% 100%;
+  /* Theme: Dark Red & Cream (Premium Expert) */
+  --primary: 0 63% 31%;
+  /* #7F1D1D - Dark Red */
+  --primary-foreground: 54 100% 95%;
+  /* #FEFCE8 - Cream */
 
-  --secondary: 14 100% 63%;
-  /* #FF6F42 - Coral/Orange */
-  --secondary-foreground: 0 0% 100%;
+  --secondary: 54 100% 95%;
+  /* #FEFCE8 - Cream */
+  --secondary-foreground: 0 63% 31%;
+  /* #7F1D1D - Dark Red */
 
-  --accent: 190 90% 45%;
-  /* #14B8A6 - Teal */
+  --accent: 0 72% 35%;
+  /* Slightly more intense Red */
   --accent-foreground: 0 0% 100%;
 
-  --background: 210 40% 98%;
-  /* #F8FAFC - Softest Slate */
+  --background: 210 20% 98%;
+  /* #F8FAFC - Soft Slate */
   --foreground: 222.2 84% 4.9%;
 
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 54 30% 96%;
+  /* Muted Cream */
+  --muted-foreground: 0 63% 31%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
 
-  --border: 214.3 31.8% 91.4%;
+  --border: 0 63% 31% / 0.1;
+  /* Red-tinted border */
   --input: 214.3 31.8% 91.4%;
-  --ring: 246 70% 58%;
+  --ring: 0 63% 31%;
 
   --radius: 1rem;
-  /* Default 16px */
 }
 
 body {

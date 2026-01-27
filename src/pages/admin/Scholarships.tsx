@@ -127,7 +127,7 @@ export default function AdminScholarships() {
                     </div>
                   </td>
                   <td className="px-8 py-5">
-                    <Badge variant="outline" className="bg-blue-50/50 text-blue-600 border-none font-bold text-[10px] uppercase">
+                    <Badge variant="outline" className="bg-primary/5 text-primary border-none font-bold text-[10px] uppercase">
                       {s.category}
                     </Badge>
                   </td>

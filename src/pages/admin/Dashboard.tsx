@@ -66,7 +66,7 @@ export default function AdminDashboard() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "Reviewing": return <Badge className="bg-blue-50 text-blue-600 border-none px-2 py-0.5"><AlertCircle className="w-3 h-3 mr-1" /> Reviewing</Badge>;
+      case "Reviewing": return <Badge className="bg-primary/5 text-primary border-none px-2 py-0.5"><AlertCircle className="w-3 h-3 mr-1" /> Reviewing</Badge>;
       case "Accepted": return <Badge className="bg-green-50 text-green-600 border-none px-2 py-0.5"><CheckCircle2 className="w-3 h-3 mr-1" /> Accepted</Badge>;
       case "Rejected": return <Badge className="bg-red-50 text-red-600 border-none px-2 py-0.5"><XCircle className="w-3 h-3 mr-1" /> Rejected</Badge>;
       default: return <Badge className="bg-slate-50 text-slate-500 border-none px-2 py-0.5"><Clock className="w-3 h-3 mr-1" /> Pending</Badge>;
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
                 <div className={`p-4 rounded-2xl ${s.bg} ${s.color}`}>
                   <s.icon className="w-6 h-6" />
                 </div>
-                <div className={`flex items-center gap-1 text-xs font-bold ${s.trend.startsWith('+') ? 'text-green-600' : 'text-blue-600'}`}>
+                <div className={`flex items-center gap-1 text-xs font-bold ${s.trend.startsWith('+') ? 'text-green-600' : 'text-primary'}`}>
                   {s.trend} <TrendingUp className="w-3 h-3" />
                 </div>
               </div>

@@ -29,7 +29,7 @@ export default function AdminApplications() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "Reviewing": return <Badge className="bg-blue-50 text-blue-600 border-none px-3 py-1 font-bold text-[10px] uppercase"><AlertCircle className="w-3 h-3 mr-1" /> Reviewing</Badge>;
+      case "Reviewing": return <Badge className="bg-primary/5 text-primary border-none px-3 py-1 font-bold text-[10px] uppercase"><AlertCircle className="w-3 h-3 mr-1" /> Reviewing</Badge>;
       case "Accepted": return <Badge className="bg-green-50 text-green-600 border-none px-3 py-1 font-bold text-[10px] uppercase"><CheckCircle2 className="w-3 h-3 mr-1" /> Accepted</Badge>;
       case "Rejected": return <Badge className="bg-red-50 text-red-600 border-none px-3 py-1 font-bold text-[10px] uppercase"><XCircle className="w-3 h-3 mr-1" /> Rejected</Badge>;
       default: return <Badge className="bg-slate-50 text-slate-500 border-none px-3 py-1 font-bold text-[10px] uppercase"><Calendar className="w-3 h-3 mr-1" /> Pending</Badge>;
