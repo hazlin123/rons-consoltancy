@@ -1,5 +1,7 @@
 # Project
 
+<!-- Deployment trigger: 2026-01-27-1130 -->
+
 ## Project info
 
 This repository contains a Vite + React + TypeScript project scaffold.
