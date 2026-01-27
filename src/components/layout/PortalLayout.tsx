@@ -8,16 +8,20 @@ import {
     LayoutDashboard,
     LogOut,
     Bell,
-    Home
+    Home,
+    Search,
+    ChevronRight
 } from "lucide-react";
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export const PortalLayout = () => {
     const { user, logout } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const navItems = [
         { icon: LayoutDashboard, label: "Dashboard", href: "/portal/dashboard" },
@@ -33,77 +37,111 @@ export const PortalLayout = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC]">
-            {/* Top Professional Banner */}
-            <div className="bg-primary text-white py-2 px-4 text-center text-[10px] font-black uppercase tracking-[0.2em]">
-                Official British IELTS Council Student Portal
-            </div>
+        <div className="flex min-h-screen bg-[#F8FAFC]">
+            {/* Left Sidebar */}
+            <aside
+                className={`fixed left-0 top-0 h-screen bg-white border-r border-slate-200 z-50 transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-20"}`}
+            >
+                <div className="flex flex-col h-full">
+                    {/* Sidebar Header */}
+                    <div className="h-20 flex items-center px-6 border-b border-slate-100">
+                        <Link to="/portal/dashboard" className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
+                                <Trophy className="w-5 h-5 text-white" />
+                            </div>
+                            {isSidebarOpen && (
+                                <div className="flex flex-col">
+                                    <span className="font-black text-sm tracking-tighter leading-none">RON'S</span>
+                                    <span className="text-[10px] font-bold text-primary italic lowercase">IELTS Portal</span>
+                                </div>
+                            )}
+                        </Link>
+                    </div>
 
-            <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-                <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-                    <Link to="/portal/dashboard" className="flex items-center gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                            <Trophy className="w-5 h-5 text-secondary" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="font-black text-lg tracking-tighter leading-none">RON'S PORTAL</span>
-                            <span className="text-[10px] font-bold text-primary italic lowercase">journey tracker</span>
-                        </div>
-                    </Link>
-
-                    {/* Desktop Nav */}
-                    <div className="hidden lg:flex items-center gap-8">
+                    {/* Navigation Items */}
+                    <nav className="flex-grow py-8 px-4 space-y-2">
                         {navItems.map((item) => {
                             const isActive = location.pathname === item.href;
                             return (
                                 <Link
                                     key={item.label}
                                     to={item.href}
-                                    className={`text-sm font-black uppercase tracking-widest transition-all ${isActive ? "text-primary border-b-2 border-primary pb-1" : "text-muted-foreground hover:text-primary"
+                                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${isActive
+                                            ? "bg-primary text-white shadow-lg shadow-primary/20"
+                                            : "text-slate-500 hover:bg-slate-50 hover:text-primary"
                                         }`}
                                 >
-                                    {item.label}
+                                    <item.icon className={`w-5 h-5 shrink-0 ${isActive ? "text-white" : "group-hover:text-primary"}`} />
+                                    {isSidebarOpen && (
+                                        <span className="text-sm font-bold tracking-tight">{item.label}</span>
+                                    )}
+                                    {isActive && isSidebarOpen && (
+                                        <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                    )}
                                 </Link>
                             );
                         })}
+                    </nav>
+
+                    {/* Sidebar Footer */}
+                    <div className="p-4 border-t border-slate-100">
+                        <Button
+                            onClick={handleLogout}
+                            variant="ghost"
+                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:text-red-500 hover:bg-red-50 transition-all ${!isSidebarOpen && "justify-center px-0"}`}
+                        >
+                            <LogOut className="w-5 h-5 shrink-0" />
+                            {isSidebarOpen && <span className="text-sm font-bold tracking-tight">Log Out</span>}
+                        </Button>
+                    </div>
+                </div>
+            </aside>
+
+            {/* Main Content Area */}
+            <div className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "ml-64" : "ml-20"}`}>
+                {/* Top Header */}
+                <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 px-8 flex items-center justify-between">
+                    <div className="flex items-center gap-4 bg-slate-100 px-4 py-2 rounded-xl w-96 border border-slate-200/50">
+                        <Search className="w-4 h-4 text-slate-400" />
+                        <input
+                            type="text"
+                            placeholder="Search courses, tests, results..."
+                            className="bg-transparent border-none text-sm focus:outline-none w-full text-slate-600 font-medium"
+                        />
                     </div>
 
-                    <div className="flex items-center gap-4">
-                        <button className="p-2 text-muted-foreground hover:text-primary transition-colors relative">
-                            <Bell className="w-5 h-5" />
-                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-secondary rounded-full border-2 border-white" />
-                        </button>
-                        <div className="h-8 w-px bg-gray-100 mx-2" />
+                    <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2">
+                            <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-white hover:shadow-soft rounded-xl transition-all relative">
+                                <Bell className="w-5 h-5" />
+                                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-white" />
+                            </button>
+                            <Link to="/">
+                                <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-white hover:shadow-soft rounded-xl transition-all">
+                                    <Home className="w-5 h-5" />
+                                </button>
+                            </Link>
+                        </div>
+
+                        <div className="h-8 w-px bg-slate-200" />
+
                         <div className="flex items-center gap-3">
-                            <Avatar className="h-10 w-10 border-2 border-primary/10 shadow-sm">
+                            <div className="text-right hidden sm:block">
+                                <div className="text-sm font-black text-slate-900 leading-none mb-1">{user?.name}</div>
+                                <div className="text-[10px] font-bold text-primary uppercase tracking-wider italic">Student Member</div>
+                            </div>
+                            <Avatar className="h-10 w-10 border-2 border-white shadow-soft">
                                 <AvatarImage src={user?.avatar} />
                                 <AvatarFallback className="bg-primary text-white font-bold">{user?.name?.charAt(0)}</AvatarFallback>
                             </Avatar>
-                            <div className="hidden sm:block">
-                                <div className="text-xs font-black text-foreground leading-none mb-1 uppercase tracking-tighter">{user?.name}</div>
-                                <div className="text-[10px] font-bold text-primary italic">My Progress</div>
-                            </div>
-                            <Button onClick={handleLogout} variant="ghost" size="icon" className="text-muted-foreground hover:text-red-500 hover:bg-red-50">
-                                <LogOut className="w-4 h-4" />
-                            </Button>
                         </div>
                     </div>
-                </div>
-            </nav>
+                </header>
 
-            {/* Portal Main Area */}
-            <main className="container mx-auto px-4 py-8">
-                <Outlet />
-            </main>
-
-            {/* Floating Home Button for Students to go back to Public Site if needed */}
-            <Link
-                to="/"
-                className="fixed bottom-8 left-8 p-4 bg-white rounded-2xl shadow-hover border border-gray-100 text-primary hover:scale-110 transition-all z-50 flex items-center gap-2 group"
-            >
-                <Home className="w-5 h-5" />
-                <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-black text-xs uppercase tracking-widest">Public Site</span>
-            </Link>
+                <main className="p-8">
+                    <Outlet />
+                </main>
+            </div>
         </div>
     );
 };

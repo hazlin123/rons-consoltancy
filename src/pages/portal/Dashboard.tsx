@@ -95,90 +95,123 @@ const StudentDashboard = () => {
     ];
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <header className="mb-8">
-                <h1 className="text-3xl font-black text-foreground mb-2 italic">Welcome back, {user?.name}!</h1>
-                <p className="text-muted-foreground font-medium">Your IELTS journey is <span className="text-primary font-bold">{progress}%</span> complete.</p>
-            </header>
+        <div className="max-w-[1600px] mx-auto space-y-10 pb-12">
+            {/* Welcome Hero Section */}
+            <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="relative overflow-hidden rounded-[2.5rem] bg-slate-900 p-12 text-white shadow-2xl"
+            >
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/20 to-transparent -z-0" />
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <Card className="rounded-2xl border-none shadow-soft overflow-hidden group">
-                    <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="p-2 bg-indigo-50 rounded-xl text-indigo-600 group-hover:scale-110 transition-transform">
-                                <Calendar className="w-6 h-6" />
-                            </div>
-                            <Badge variant="secondary" className="bg-indigo-50 text-indigo-700 border-none">Attendance</Badge>
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div className="max-w-xl">
+                        <Badge className="bg-primary/20 text-primary border-primary/20 mb-6 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+                            Academic Progress
+                        </Badge>
+                        <h1 className="text-4xl md:text-6xl font-black mb-6 leading-[1.1]">
+                            Welcome back, <span className="text-primary italic">{user?.name}!</span>
+                        </h1>
+                        <p className="text-slate-400 text-lg font-medium leading-relaxed mb-8">
+                            You're doing great! Your path to success is <span className="text-white font-bold">{progress}%</span> complete. Keep pushing towards your target band 8.0!
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                            <Button className="bg-primary hover:bg-primary/90 text-white rounded-2xl px-8 h-14 font-black text-lg shadow-lg shadow-primary/25">
+                                Continue Lesson
+                            </Button>
+                            <Button variant="outline" className="border-slate-700 bg-white/5 hover:bg-white/10 text-white rounded-2xl px-8 h-14 font-black text-lg">
+                                View Schedule
+                            </Button>
                         </div>
-                        <div className="text-3xl font-black text-foreground mb-1">{attendanceRate}%</div>
-                        <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Perfect Attendance</p>
-                    </CardContent>
-                </Card>
+                    </div>
 
-                <Card className="rounded-2xl border-none shadow-soft overflow-hidden group">
-                    <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="p-2 bg-orange-50 rounded-xl text-orange-600 group-hover:scale-110 transition-transform">
-                                <BookOpen className="w-6 h-6" />
+                    <div className="relative">
+                        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full border-[12px] border-slate-800 flex items-center justify-center relative">
+                            <svg className="absolute inset-0 w-full h-full transform -rotate-90">
+                                <circle
+                                    cx="50%"
+                                    cy="50%"
+                                    r="45%"
+                                    stroke="currentColor"
+                                    strokeWidth="12"
+                                    fill="transparent"
+                                    strokeDasharray="100 100"
+                                    strokeDashoffset={100 - progress}
+                                    className="text-primary transition-all duration-1000 ease-out"
+                                    pathLength="100"
+                                />
+                            </svg>
+                            <div className="text-center">
+                                <div className="text-4xl md:text-6xl font-black">{progress}%</div>
+                                <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Readiness</div>
                             </div>
-                            <Badge variant="secondary" className="bg-orange-50 text-orange-700 border-none">Tasks</Badge>
                         </div>
-                        <div className="text-3xl font-black text-foreground mb-1">{pendingAssignments}</div>
-                        <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Pending Assignments</p>
-                    </CardContent>
-                </Card>
+                    </div>
+                </div>
+            </motion.section>
 
-                <Card className="rounded-2xl border-none shadow-soft overflow-hidden group">
-                    <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="p-2 bg-teal-50 rounded-xl text-teal-600 group-hover:scale-110 transition-transform">
-                                <Trophy className="w-6 h-6" />
-                            </div>
-                            <Badge variant="secondary" className="bg-teal-50 text-teal-700 border-none">Latest Score</Badge>
-                        </div>
-                        <div className="text-3xl font-black text-foreground mb-1">{lastMockScore}</div>
-                        <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Mock Result (AVG)</p>
-                    </CardContent>
-                </Card>
-
-                <Card className="rounded-2xl border-none shadow-soft overflow-hidden group">
-                    <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="p-2 bg-green-50 rounded-xl text-green-600 group-hover:scale-110 transition-transform">
-                                <CreditCard className="w-6 h-6" />
-                            </div>
-                            <Badge variant="secondary" className="bg-green-50 text-green-700 border-none">Payment</Badge>
-                        </div>
-                        <div className="text-xl font-black text-foreground mb-1 italic uppercase">{tuitionStatus}</div>
-                        <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Tuition Status</p>
-                    </CardContent>
-                </Card>
+            {/* Quick Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                    { label: "Attendance", value: `${attendanceRate}%`, icon: Calendar, color: "indigo", sub: "Perfect Presence" },
+                    { label: "Pending Tasks", value: pendingAssignments, icon: BookOpen, color: "orange", sub: "Assignments" },
+                    { label: "Mock Result", value: lastMockScore, icon: Trophy, color: "teal", sub: "Latest AVG" },
+                    { label: "Tuition", value: tuitionStatus, icon: CreditCard, color: "green", sub: "Payment Status" }
+                ].map((stat, i) => (
+                    <motion.div
+                        key={stat.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                    >
+                        <Card className="rounded-[2rem] border-none shadow-soft hover:shadow-hover transition-all duration-300 group overflow-hidden">
+                            <CardContent className="p-8">
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className={`p-3 rounded-2xl bg-${stat.color}-50 text-${stat.color}-600 group-hover:scale-110 transition-transform`}>
+                                        <stat.icon className="w-6 h-6" />
+                                    </div>
+                                    <div className={`w-12 h-1 bg-${stat.color}-100 rounded-full overflow-hidden`}>
+                                        <div className={`h-full bg-${stat.color}-500 w-2/3`} />
+                                    </div>
+                                </div>
+                                <div className="text-3xl font-black text-slate-900 mb-1">{stat.value}</div>
+                                <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">{stat.sub}</div>
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                ))}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Progress Timeline */}
-                <Card className="lg:col-span-2 rounded-[2rem] border-none shadow-soft p-8">
-                    <CardHeader className="px-0 pt-0">
-                        <CardTitle className="text-2xl font-black italic">Journey Timeline</CardTitle>
+                {/* Timeline & Schedule */}
+                <Card className="lg:col-span-2 rounded-[2.5rem] border-none shadow-soft p-10 bg-white">
+                    <CardHeader className="px-0 pt-0 mb-8 flex flex-row items-center justify-between">
+                        <CardTitle className="text-2xl font-black italic text-slate-900">Journey Timeline</CardTitle>
+                        <Button variant="ghost" className="text-primary font-bold text-sm">View Full History</Button>
                     </CardHeader>
                     <CardContent className="px-0">
-                        <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-100 before:to-transparent">
+                        <div className="relative space-y-8 before:absolute before:inset-0 before:ml-6 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-100">
                             {journeyStages.map((stage, index) => (
-                                <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-white shadow-soft group-hover:scale-110 transition-transform z-10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                                <div key={index} className="relative flex items-start gap-8 group">
+                                    <div className={`flex items-center justify-center w-12 h-12 rounded-2xl border-4 border-white shadow-soft transition-all duration-300 z-10 shrink-0 ${stage.status === 'completed' ? "bg-green-500 text-white" :
+                                            stage.status === 'current' ? "bg-primary text-white scale-110 shadow-lg shadow-primary/20" :
+                                                "bg-slate-50 text-slate-300"
+                                        }`}>
                                         {stage.status === 'completed' ? (
-                                            <CheckCircle2 className="w-6 h-6 text-green-500" />
+                                            <CheckCircle2 className="w-6 h-6" />
                                         ) : stage.status === 'current' ? (
-                                            <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+                                            <div className="w-3 h-3 rounded-full bg-white animate-pulse" />
                                         ) : (
-                                            <Clock className="w-5 h-5 text-slate-300" />
+                                            <Clock className="w-5 h-5" />
                                         )}
                                     </div>
-                                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:shadow-soft transition-all">
-                                        <div className="flex items-center justify-between space-x-2 mb-1">
-                                            <div className="font-black text-foreground">{stage.title}</div>
-                                            <time className="text-[10px] uppercase font-bold text-primary">{stage.date}</time>
+                                    <div className="flex-grow pb-8 border-b border-slate-50 last:border-0 last:pb-0">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <h4 className="font-black text-slate-900 group-hover:text-primary transition-colors">{stage.title}</h4>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/5 px-3 py-1 rounded-full">{stage.date}</span>
                                         </div>
+                                        <p className="text-sm text-slate-400 font-medium">Official milestone for your IELTS success program.</p>
                                     </div>
                                 </div>
                             ))}
@@ -186,65 +219,52 @@ const StudentDashboard = () => {
                     </CardContent>
                 </Card>
 
-                {/* Score Analytics */}
-                <Card className="rounded-[2rem] border-none shadow-soft p-8 bg-primary text-white">
-                    <CardHeader className="px-0 pt-0">
-                        <CardTitle className="text-2xl font-black italic">IELTS Readiness</CardTitle>
-                    </CardHeader>
-                    <CardContent className="px-0 space-y-6">
-                        <div className="text-center py-6">
-                            <div className="inline-flex relative items-center justify-center">
-                                <svg className="w-32 h-32 transform -rotate-90">
-                                    <circle
-                                        cx="64"
-                                        cy="64"
-                                        r="58"
-                                        stroke="currentColor"
-                                        strokeWidth="8"
-                                        fill="transparent"
-                                        className="text-white/10"
-                                    />
-                                    <circle
-                                        cx="64"
-                                        cy="64"
-                                        r="58"
-                                        stroke="currentColor"
-                                        strokeWidth="8"
-                                        fill="transparent"
-                                        strokeDasharray={364.42}
-                                        strokeDashoffset={364.42 - (progress / 100) * 364.42}
-                                        className="text-secondary"
-                                    />
-                                </svg>
-                                <span className="absolute text-3xl font-black">{progress}%</span>
+                {/* Performance Analytics Sidebar */}
+                <div className="space-y-8">
+                    <Card className="rounded-[2.5rem] border-none shadow-soft p-10 bg-white overflow-hidden relative">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-2xl" />
+                        <CardHeader className="px-0 pt-0 mb-6">
+                            <CardTitle className="text-xl font-black italic">Test Performance</CardTitle>
+                        </CardHeader>
+                        <CardContent className="px-0 space-y-4">
+                            {[
+                                { label: "Listening", score: "8.5", color: "indigo" },
+                                { label: "Reading", score: "7.5", color: "orange" },
+                                { label: "Writing", score: "7.0", color: "teal" },
+                                { label: "Speaking", score: "8.0", color: "green" }
+                            ].map((test) => (
+                                <div key={test.label} className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-primary/20 transition-all group">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-2 h-8 rounded-full bg-${test.color}-500`} />
+                                        <span className="font-bold text-slate-600 group-hover:text-slate-900">{test.label}</span>
+                                    </div>
+                                    <span className="text-lg font-black text-slate-900">{test.score}</span>
+                                </div>
+                            ))}
+                            <Button
+                                onClick={handleMockTest}
+                                className="w-full mt-6 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl h-14 font-black transition-all hover:scale-[1.02] active:scale-[0.98]"
+                            >
+                                Practice Test
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="rounded-[2.5rem] border-none shadow-soft p-8 bg-gradient-to-br from-primary to-indigo-600 text-white">
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
+                                <TrendingUp className="w-6 h-6 text-white" />
+                            </div>
+                            <div>
+                                <div className="text-xs font-bold uppercase tracking-widest text-white/70">Expert Tip</div>
+                                <div className="font-black">Focus on Lexical Resource</div>
                             </div>
                         </div>
-
-                        <div className="space-y-4">
-                            <div className="flex justify-between items-center bg-white/10 p-4 rounded-2xl">
-                                <div className="flex items-center gap-3">
-                                    <TrendingUp className="w-5 h-5 text-secondary" />
-                                    <span className="font-bold text-sm">Target Band</span>
-                                </div>
-                                <span className="text-xl font-black">8.0</span>
-                            </div>
-                            <div className="flex justify-between items-center bg-white/10 p-4 rounded-2xl">
-                                <div className="flex items-center gap-3">
-                                    <Clock className="w-5 h-5 text-secondary" />
-                                    <span className="font-bold text-sm">Study Days</span>
-                                </div>
-                                <span className="text-xl font-black">{journey?.study_days_count || 0}</span>
-                            </div>
-                        </div>
-
-                        <Button
-                            onClick={handleMockTest}
-                            className="w-full bg-white text-primary hover:bg-white/90 rounded-2xl h-14 font-black text-lg"
-                        >
-                            Take Mock Test
-                        </Button>
-                    </CardContent>
-                </Card>
+                        <p className="text-sm font-medium leading-relaxed text-white/80">
+                            Improving your vocabulary variety can push your Writing and Speaking scores from 7.0 to 8.5!
+                        </p>
+                    </Card>
+                </div>
             </div>
         </div>
     );
