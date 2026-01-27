@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, GraduationCap, ArrowRight } from "lucide-react";
+import { Menu, X, GraduationCap, User, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/context/AuthContext";
 
 const navLinks = [
   { name: "Scholarships", href: "#scholarships" },
@@ -12,6 +13,7 @@ const navLinks = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isAuthenticated, user } = useAuth();
 
   return (
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl">
@@ -48,11 +50,22 @@ export const Header = () => {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
-          <a href="#contact" className="hidden sm:block">
-            <Button variant="ghost" className="text-sm font-semibold hover:bg-primary/5">
-              Contact Us
+          <Link to="/portal" className="hidden lg:block">
+            <Button variant="ghost" className="text-sm font-semibold hover:bg-primary/5 flex items-center gap-2">
+              {isAuthenticated ? (
+                <>
+                  <LayoutDashboard className="w-4 h-4" />
+                  Portal
+                </>
+              ) : (
+                <>
+                  <User className="w-4 h-4" />
+                  Student Portal
+                </>
+              )}
             </Button>
-          </a>
+          </Link>
+
           <a href="#contact">
             <Button className="rounded-xl px-6 bg-primary text-white font-semibold shadow-lg shadow-primary/25 hover:scale-105 transition-transform active:scale-95">
               Get Started
@@ -89,6 +102,16 @@ export const Header = () => {
                   {link.name}
                 </a>
               ))}
+
+              <Link
+                to="/portal"
+                className="text-lg font-semibold text-primary py-2 border-b border-gray-50 flex items-center gap-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {isAuthenticated ? <LayoutDashboard className="w-5 h-5" /> : <User className="w-5 h-5" />}
+                {isAuthenticated ? "Go to Portal" : "Student Portal Login"}
+              </Link>
+
               <div className="pt-4 flex flex-col gap-3">
                 <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
                   <Button className="w-full h-12 rounded-xl bg-primary">Talk to an Expert</Button>

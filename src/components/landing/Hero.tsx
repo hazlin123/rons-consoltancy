@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, GraduationCap, Globe, BookOpen, Phone, MessageCircle } from "lucide-react";
+import { ArrowRight, GraduationCap, Globe, BookOpen, Phone, MessageCircle, User } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -71,11 +72,11 @@ export const Hero = () => {
                 <Phone className="w-6 h-6" /> Call Now
               </Button>
             </a>
-            <a href="https://wa.me/254720494322" target="_blank" rel="noopener noreferrer">
+            <Link to="/portal">
               <Button size="xl" variant="ghost" className="rounded-2xl h-16 px-10 font-bold group flex items-center gap-3 bg-white/50 backdrop-blur-sm border border-gray-100 transition-all duration-300 hover:shadow-hover hover:scale-[1.02]">
-                <MessageCircle className="w-6 h-6 text-green-500" /> WhatsApp Us
+                <User className="w-6 h-6 text-primary" /> Student Portal
               </Button>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
