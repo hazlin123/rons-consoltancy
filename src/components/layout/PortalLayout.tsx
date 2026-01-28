@@ -16,6 +16,7 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export const PortalLayout = () => {
     const { user, logout } = useAuth();
@@ -37,10 +38,10 @@ export const PortalLayout = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#F9FAFB] font-sans">
+        <div className="flex min-h-screen bg-background font-sans">
             {/* Left Sidebar - Dark Red Palette */}
             <aside
-                className={`fixed left-0 top-0 h-screen bg-primary text-white z-50 transition-all duration-300 border-r border-white/5 shadow-2xl ${isSidebarOpen ? "w-64" : "w-20"}`}
+                className={`fixed left-0 top-0 h-screen bg-primary text-white z-50 transition-all duration-300 border-r border-white/5 shadow-2xl ${isSidebarOpen ? "w-64" : "w-20"} dark:bg-card dark:border-border`}
             >
                 <div className="flex flex-col h-full">
                     {/* Sidebar Header */}
@@ -51,8 +52,8 @@ export const PortalLayout = () => {
                             </div>
                             {isSidebarOpen && (
                                 <div className="flex flex-col">
-                                    <span className="font-black text-sm tracking-tighter leading-none text-secondary uppercase">RONS</span>
-                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest italic">Future Bridge</span>
+                                    <span className="font-display font-black text-base tracking-tighter leading-none text-secondary italic">RONS</span>
+                                    <span className="text-[9px] font-bold text-white/50 uppercase tracking-[0.3em] font-sans">Future Bridge</span>
                                 </div>
                             )}
                         </Link>
@@ -100,24 +101,25 @@ export const PortalLayout = () => {
             {/* Main Content Area */}
             <div className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "ml-64" : "ml-20"}`}>
                 {/* Top Header */}
-                <header className="h-20 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 px-8 flex items-center justify-between shadow-sm">
-                    <div className="flex items-center gap-4 bg-slate-50 px-4 py-2 rounded-xl w-96 border border-slate-200/50 focus-within:ring-2 ring-primary/5 transition-all shadow-inner">
+                <header className="h-20 bg-white/80 dark:bg-background/80 backdrop-blur-md border-b border-slate-200 dark:border-border sticky top-0 z-40 px-8 flex items-center justify-between shadow-sm">
+                    <div className="flex items-center gap-4 bg-slate-50 dark:bg-muted px-4 py-2 rounded-xl w-96 border border-slate-200/50 dark:border-border focus-within:ring-2 ring-primary/5 transition-all shadow-inner">
                         <Search className="w-4 h-4 text-slate-400" />
                         <input
                             type="text"
                             placeholder="Search courses, tests, results..."
-                            className="bg-transparent border-none text-sm focus:outline-none w-full text-slate-600 font-medium"
+                            className="bg-transparent border-none text-sm focus:outline-none w-full text-slate-600 dark:text-slate-300 font-medium placeholder:text-slate-400"
                         />
                     </div>
 
                     <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
-                            <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-secondary/20 hover:shadow-soft rounded-xl transition-all relative">
+                            <ModeToggle />
+                            <button className="p-3 bg-primary/5 text-primary hover:bg-primary hover:text-white rounded-2xl transition-all duration-500 relative shadow-sm">
                                 <Bell className="w-5 h-5" />
-                                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-white" />
+                                <span className="absolute top-3 right-3 w-2.5 h-2.5 bg-accent rounded-full border-2 border-white shadow-soft" />
                             </button>
                             <Link to="/">
-                                <button className="p-2.5 bg-slate-50 text-slate-400 hover:text-primary hover:bg-secondary/20 hover:shadow-soft rounded-xl transition-all shadow-sm">
+                                <button className="p-3 bg-primary/5 text-primary hover:bg-primary hover:text-white rounded-2xl transition-all duration-500 shadow-sm">
                                     <Home className="w-5 h-5" />
                                 </button>
                             </Link>
@@ -125,10 +127,10 @@ export const PortalLayout = () => {
 
                         <div className="h-8 w-px bg-slate-200" />
 
-                        <div className="flex items-center gap-3 border border-primary/5 p-1.5 rounded-2xl bg-slate-50 shadow-sm">
+                        <div className="flex items-center gap-4 p-2 pr-4 rounded-2xl bg-primary/5 border border-primary/5 shadow-soft">
                             <div className="text-right hidden sm:block pl-2">
-                                <div className="text-xs font-black text-slate-900 leading-none mb-1 uppercase tracking-tighter italic">{user?.name}</div>
-                                <div className="text-[10px] font-bold text-primary uppercase tracking-wider italic">Student Member</div>
+                                <div className="text-xs font-display font-black text-primary leading-none mb-1 italic tracking-tight uppercase">{user?.name}</div>
+                                <div className="text-[9px] font-bold text-primary/40 uppercase tracking-[0.2em]">Student Member</div>
                             </div>
                             <Avatar className="h-9 w-9 border-2 border-white shadow-soft">
                                 <AvatarImage src={user?.avatar} />

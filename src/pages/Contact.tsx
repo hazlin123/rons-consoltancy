@@ -27,10 +27,10 @@ export default function Contact() {
                             </div>
                             <h4 className="text-xl font-bold text-primary mb-2">Support Chat</h4>
                             <p className="text-slate-500 mb-4 text-sm">Our typical response time is under 1 hour during business days.</p>
-                            <a href="#" className="text-secondary font-bold hover:underline">Start Chat</a>
+                            <a href="#" className="text-accent font-bold hover:underline">Start Chat</a>
                         </div>
                         <div className="p-8">
-                            <div className="w-16 h-16 bg-gold-50 text-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                                 <Phone className="w-8 h-8" />
                             </div>
                             <h4 className="text-xl font-bold text-primary mb-2">Direct Call</h4>
@@ -38,7 +38,7 @@ export default function Contact() {
                             <a href="tel:+254720494322" className="text-primary font-bold hover:underline">+254 720 494 322</a>
                         </div>
                         <div className="p-8">
-                            <div className="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                                 <MapPin className="w-8 h-8" />
                             </div>
                             <h4 className="text-xl font-bold text-primary mb-2">Visit Office</h4>

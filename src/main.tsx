@@ -17,6 +17,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
 import Scholarship from "./pages/Scholarship";
 import NotFound from "./pages/NotFound";
 
@@ -65,6 +67,10 @@ class ErrorBoundary extends React.Component<{
   }
 }
 
+import { ThemeProvider } from "./components/theme-provider"
+
+// ... imports
+
 const root = createRoot(rootEl);
 
 root.render(
@@ -72,56 +78,60 @@ root.render(
     <ErrorBoundary>
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
+          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <Routes>
 
-            {/* Public Routes */}
-            <Route element={<PublicLayout />}>
-              <Route path="/" element={<Index />} />
-              <Route path="/scholarships" element={<Scholarships />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/auth/login" element={<Login />} />
-              <Route path="/auth/register" element={<Register />} />
-              <Route path="/scholarships/:id" element={<Scholarship />} />
-            </Route>
+              {/* Public Routes */}
+              <Route element={<PublicLayout />}>
+                <Route path="/" element={<Index />} />
+                <Route path="/scholarships" element={<Scholarships />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/auth/login" element={<Login />} />
+                <Route path="/auth/register" element={<Register />} />
+                <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+                <Route path="/auth/reset-password" element={<ResetPassword />} />
+                <Route path="/scholarships/:id" element={<Scholarship />} />
+              </Route>
 
-            {/* Admin Login */}
-            <Route path="/admin/login" element={<AdminLogin />} />
+              {/* Admin Login */}
+              <Route path="/admin/login" element={<AdminLogin />} />
 
-            {/* Student Portal Routes */}
-            <Route path="/portal" element={
-              <ProtectedRoute>
-                <PortalLayout />
-              </ProtectedRoute>
-            }>
-              <Route index element={<StudentDashboard />} />
-              <Route path="dashboard" element={<StudentDashboard />} />
-              {/* Placeholders for portal sections */}
-              <Route path="classes" element={<StudentDashboard />} />
-              <Route path="assignments" element={<StudentDashboard />} />
-              <Route path="tests" element={<StudentDashboard />} />
-              <Route path="tuition" element={<StudentDashboard />} />
-            </Route>
+              {/* Student Portal Routes */}
+              <Route path="/portal" element={
+                <ProtectedRoute>
+                  <PortalLayout />
+                </ProtectedRoute>
+              }>
+                <Route index element={<StudentDashboard />} />
+                <Route path="dashboard" element={<StudentDashboard />} />
+                {/* Placeholders for portal sections */}
+                <Route path="classes" element={<StudentDashboard />} />
+                <Route path="assignments" element={<StudentDashboard />} />
+                <Route path="tests" element={<StudentDashboard />} />
+                <Route path="tuition" element={<StudentDashboard />} />
+              </Route>
 
-            {/* Admin Routes */}
-            <Route path="/admin" element={
-              <ProtectedRoute adminOnly>
-                <AdminLayout />
-              </ProtectedRoute>
-            }>
-              <Route index element={<AdminDashboard />} />
-              <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="management" element={<StudentManagement />} />
-              <Route path="scholarships" element={<AdminScholarships />} />
-              <Route path="scholarships/new" element={<ScholarshipEdit />} />
-              <Route path="scholarships/:id/edit" element={<ScholarshipEdit />} />
-              <Route path="applications" element={<AdminApplications />} />
-            </Route>
+              {/* Admin Routes */}
+              <Route path="/admin" element={
+                <ProtectedRoute adminOnly>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }>
+                <Route index element={<AdminDashboard />} />
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="management" element={<StudentManagement />} />
+                <Route path="scholarships" element={<AdminScholarships />} />
+                <Route path="scholarships/new" element={<ScholarshipEdit />} />
+                <Route path="scholarships/:id/edit" element={<ScholarshipEdit />} />
+                <Route path="applications" element={<AdminApplications />} />
+              </Route>
 
-            {/* Fallback */}
-            <Route path="*" element={<NotFound />} />
+              {/* Fallback */}
+              <Route path="*" element={<NotFound />} />
 
-          </Routes>
+            </Routes>
+          </ThemeProvider>
         </AuthProvider>
       </BrowserRouter>
     </ErrorBoundary>

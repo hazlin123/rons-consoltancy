@@ -27,6 +27,7 @@ export interface Application {
 
 export interface User {
     id: string;
+    studentId?: string;
     name: string;
     email: string;
     role: 'student' | 'admin';

@@ -45,7 +45,7 @@ export const ApplicationForm = ({ scholarshipTitle }: { scholarshipTitle: string
                             <CheckCircle2 className="w-10 h-10 text-green-600" />
                         </div>
                     </div>
-                    <h2 className="text-3xl font-bold text-primary">Application Received!</h2>
+                    <h2 className="text-3xl font-display font-black text-primary italic">Application Received!</h2>
                     <p className="text-muted-foreground text-lg max-w-md mx-auto">
                         Thank you for applying to the <strong>{scholarshipTitle}</strong>. Our team will review your documents and contact you within 5-7 business days.
                     </p>
@@ -58,11 +58,12 @@ export const ApplicationForm = ({ scholarshipTitle }: { scholarshipTitle: string
     }
 
     return (
-        <Card className="border-gray-100 shadow-xl rounded-[2rem] overflow-hidden">
-            <CardHeader className="bg-primary text-white p-8 lg:p-12 text-center">
-                <CardTitle className="text-3xl font-bold font-display mb-2">Apply for Scholarship</CardTitle>
-                <CardDescription className="text-primary-foreground/70 text-lg">
-                    Currently applying for: <span className="text-secondary font-semibold">{scholarshipTitle}</span>
+        <Card className="border border-white/40 shadow-2xl rounded-[2.5rem] overflow-hidden bg-white">
+            <CardHeader className="bg-primary text-secondary p-10 lg:p-14 text-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-2xl" />
+                <CardTitle className="text-4xl font-display font-black mb-3 italic">Apply for Scholarship</CardTitle>
+                <CardDescription className="text-secondary/60 text-lg italic tracking-wide">
+                    Currently applying for: <span className="text-white font-bold">{scholarshipTitle}</span>
                 </CardDescription>
             </CardHeader>
             <CardContent className="p-8 lg:p-12">
@@ -152,8 +153,8 @@ export const ApplicationForm = ({ scholarshipTitle }: { scholarshipTitle: string
                             </p>
                         </div>
 
-                        <Button type="submit" className="w-full h-16 bg-primary text-white hover:bg-primary/90 font-bold text-lg rounded-xl shadow-lg shadow-primary/20">
-                            Submit Application <Send className="ml-2 w-5 h-5" />
+                        <Button type="submit" className="w-full h-18 bg-primary text-white hover:bg-primary/95 font-black text-xs uppercase tracking-[0.25em] rounded-2xl shadow-2xl shadow-primary/30 transition-all duration-500 italic">
+                            Submit Application <Send className="ml-3 w-4 h-4" />
                         </Button>
                     </form>
                 </Form>

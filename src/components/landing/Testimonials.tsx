@@ -1,80 +1,119 @@
-import { Star, Quote } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
+import { Globe, Lightbulb, TrendingUp, Award, ArrowUpRight } from "lucide-react";
 
-const testimonials = [
+const features = [
   {
-    name: "Sarah Chen",
-    role: "Oxford University Scholar",
-    content: "ScholarPath transformed my application process. Their guidance on the personal statement was invaluable, and I successfully secured full funding for my Masters.",
-    avatar: "SC",
-    image: "https://i.pravatar.cc/150?u=sarah"
+    title: "Global University Network",
+    description: "Direct partnerships with 50+ elite institutions across the UK, USA, Canada, and Australia.",
+    icon: Globe,
+    color: "bg-blue-50 text-blue-600",
+    delay: 0
   },
   {
-    name: "David Mwangi",
-    role: "MIT Undergraduate Student",
-    content: "Coming from Kenya, I wasn't sure how to approach US Ivy League applications. The mentorship here is top-notch. I'm now halfway through my CS degree at MIT!",
-    avatar: "DM",
-    image: "https://i.pravatar.cc/150?u=david"
+    title: "Expert Mentorship",
+    description: "One-on-one guidance from scholars who have successfully navigated the Ivy League application process.",
+    icon: Lightbulb,
+    color: "bg-amber-50 text-amber-600",
+    delay: 0.2
   },
   {
-    name: "Elena Rodriguez",
-    role: "Toronto PhD Candidate",
-    content: "The level of detail in their scholarship database is unmatched. I found niche grants I would have never discovered on my own. Highly recommended.",
-    avatar: "ER",
-    image: "https://i.pravatar.cc/150?u=elena"
+    title: "98% Visa Success Rate",
+    description: "Our specialized legal team ensures your documentation is flawless, maximizing your approval chances.",
+    icon: TrendingUp,
+    color: "bg-emerald-50 text-emerald-600",
+    delay: 0.4
   }
 ];
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[40%] h-[120%] bg-primary/5 rounded-bl-[400px] -z-10 blur-3xl opacity-30" />
-
+    <section className="py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl font-black mb-6 text-foreground">Student <span className="text-primary italic">Success</span> Stories</h2>
-          <p className="text-muted-foreground text-lg font-medium">
-            Join thousands of successful students who achieved their dreams through our portal.
-          </p>
+
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl"
+          >
+            <div className="text-[11px] font-black uppercase tracking-[0.3em] text-accent mb-6 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-accent"></span>
+              Why Choose Excellence
+            </div>
+            <h2 className="text-5xl md:text-7xl font-display font-black text-primary leading-[0.95] tracking-tight">
+              Elevate Your <br />
+              <span className="italic text-primary/40">Academic Future</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-md"
+          >
+            <p className="text-primary/60 text-lg font-medium leading-relaxed">
+              We don't just process applications; we architect educational journeys that transform lives and careers.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {testimonials.map((t, i) => (
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 rounded-3xl shadow-soft border border-gray-100 relative group hover:shadow-hover transition-all duration-300"
+              transition={{ duration: 0.8, delay: feature.delay }}
+              className="group relative h-[400px] rounded-[2.5rem] bg-white dark:bg-card border border-primary/5 dark:border-primary/10 p-8 flex flex-col justify-between overflow-hidden cursor-pointer shadow-soft hover:shadow-2xl transition-all duration-500"
             >
-              <Quote className="absolute top-6 right-8 w-12 h-12 text-primary/5 group-hover:text-primary/10 transition-colors" />
+              {/* Hover Background */}
+              <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
 
-              <div className="flex gap-1 mb-6">
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-primary text-primary" />
-                ))}
-              </div>
+              {/* Content Layer */}
+              <div className="relative z-10 h-full flex flex-col justify-between">
+                <div className="flex justify-between items-start">
+                  <div className={`w-16 h-16 rounded-2xl ${feature.color} flex items-center justify-center group-hover:bg-white/10 group-hover:text-white transition-colors duration-500`}>
+                    <feature.icon className="w-7 h-7" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full border border-primary/10 group-hover:border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
+                    <ArrowUpRight className="w-5 h-5 text-white" />
+                  </div>
+                </div>
 
-              <p className="text-foreground mb-8 font-medium leading-relaxed italic text-lg">
-                "{t.content}"
-              </p>
-
-              <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
-                <Avatar className="h-14 w-14 border-2 border-primary/20">
-                  <AvatarImage src={t.image} />
-                  <AvatarFallback className="bg-primary text-white font-bold">{t.avatar}</AvatarFallback>
-                </Avatar>
-                <div className="text-left">
-                  <div className="font-black text-foreground">{t.name}</div>
-                  <div className="text-xs font-bold text-primary uppercase tracking-wider">{t.role}</div>
+                <div>
+                  <h3 className="text-3xl font-display font-black text-primary mb-4 group-hover:text-white transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-primary/60 font-medium leading-relaxed group-hover:text-white/80 transition-colors duration-300">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-20 flex justify-center"
+        >
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/5 border border-primary/10 text-primary font-bold text-xs uppercase tracking-widest">
+            <Award className="w-4 h-4 text-accent" />
+            <span>Trusted by 500+ Scholars Worldwide</span>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

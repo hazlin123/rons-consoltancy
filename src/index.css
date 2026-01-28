@@ -1,44 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Theme: Dark Red & Cream (Premium Expert) */
-  --primary: 0 63% 31%;
-  /* #7F1D1D - Dark Red */
-  --primary-foreground: 54 100% 95%;
-  /* #FEFCE8 - Cream */
+  /* Theme: Premium Skincare Aesthetic (Mint & Forest) */
+  --primary: 153 100% 12%;
+  /* #022c22 - Deep Forest */
+  --primary-foreground: 142 33% 98%;
+  /* Light Mint */
 
-  --secondary: 54 100% 95%;
-  /* #FEFCE8 - Cream */
-  --secondary-foreground: 0 63% 31%;
-  /* #7F1D1D - Dark Red */
+  --secondary: 142 33% 98%;
+  /* Light Mint Background */
+  --secondary-foreground: 153 100% 12%;
 
-  --accent: 0 72% 35%;
-  /* Slightly more intense Red */
-  --accent-foreground: 0 0% 100%;
+  --accent: 142 76% 36%;
+  /* Emerald Accent */
+  --accent-foreground: 210 20% 98%;
 
-  --background: 210 20% 98%;
-  /* #F8FAFC - Soft Slate */
-  --foreground: 222.2 84% 4.9%;
+  --background: 142 33% 99%;
+  /* Crisp White-Mint */
+  --foreground: 153 100% 8%;
 
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
+  --card-foreground: 153 100% 8%;
 
-  --muted: 54 30% 96%;
-  /* Muted Cream */
-  --muted-foreground: 0 63% 31%;
+  --muted: 153 20% 95%;
+  /* Muted Green-Gray */
+  --muted-foreground: 153 50% 20%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
+  --popover-foreground: 153 100% 8%;
 
-  --border: 0 63% 31% / 0.1;
-  /* Red-tinted border */
-  --input: 214.3 31.8% 91.4%;
-  --ring: 0 63% 31%;
+  --border: 153 100% 12% / 0.08;
+  --input: 153 20% 94%;
+  --ring: 153 100% 12%;
 
-  --radius: 1rem;
+  --radius: 1.25rem;
+}
+
+.dark {
+  /* Dark Theme: Jet, Antique Brass, Coffee & Dark Jungle Green */
+  --background: 180 5% 15%;
+  /* Jet - dark charcoal background */
+  --foreground: 36 28% 85%;
+  /* Light antique brass text */
+
+  --card: 180 5% 18%;
+  /* Slightly lighter jet for cards */
+  --card-foreground: 36 28% 85%;
+
+  --popover: 180 5% 18%;
+  --popover-foreground: 36 28% 85%;
+
+  --primary: 36 45% 55%;
+  /* Antique Brass - warm golden-brown primary */
+  --primary-foreground: 180 5% 10%;
+
+  --secondary: 25 30% 25%;
+  /* Coffee - rich brown secondary */
+  --secondary-foreground: 36 28% 85%;
+
+  --muted: 25 30% 25%;
+  --muted-foreground: 36 20% 65%;
+
+  --accent: 150 35% 20%;
+  /* Dark Jungle Green accent */
+  --accent-foreground: 36 28% 85%;
+
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 180 5% 25%;
+  --input: 180 5% 20%;
+  --ring: 36 45% 55%;
+  /* Antique Brass ring */
 }
 
 body {
@@ -54,26 +90,36 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
-/* Custom Utilities for Travelly aesthetic */
+/* Premium Skincare Aesthetic Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.organic-shadow {
+  box-shadow: 0 20px 40px -20px rgba(2, 44, 34, 0.1);
+}
+
+/* Custom Utilities */
 .rounded-3xl {
   border-radius: 1.5rem;
-  /* 24px */
 }
 
 .rounded-4xl {
   border-radius: 2rem;
-  /* 32px */
 }
 
 .shadow-soft {
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(2, 44, 34, 0.08);
 }
 
 .shadow-hover {
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(2, 44, 34, 0.12);
 }
 
 .text-gradient {
@@ -81,4 +127,24 @@ h6 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-up {
+  animation: reveal-up 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }

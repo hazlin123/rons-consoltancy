@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { useToast } from "@/components/ui/use-toast";
 import {
   Search,
   Filter,
@@ -15,17 +17,72 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function AdminApplications() {
   const [search, setSearch] = useState("");
+  const [applications, setApplications] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
-  const applications = [
-    { id: "1", name: "Sarah Chen", scholarship: "Oxford Global Excellence", status: "Reviewing", date: "2024-03-24", email: "sarah.c@example.com", avatar: "SC" },
-    { id: "2", name: "David Mwangi", scholarship: "MIT Tech Grant", status: "Accepted", date: "2024-03-23", email: "david.m@example.com", avatar: "DM" },
-    { id: "3", name: "Elena Rodriguez", scholarship: "Vanier Canada PhD", status: "Pending", date: "2024-03-22", email: "elena.r@example.com", avatar: "ER" },
-    { id: "4", name: "Ahmed Hassan", scholarship: "Oxford Global Excellence", status: "Rejected", date: "2024-03-21", email: "ahmed.h@example.com", avatar: "AH" },
-    { id: "5", name: "Lin Zhao", scholarship: "Commonwealth Shared", status: "Reviewing", date: "2024-03-20", email: "lin.z@example.com", avatar: "LZ" },
-  ];
+  const fetchApplications = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('scholarship_applications')
+        .select(`
+          id,
+          status,
+          created_at,
+          profiles (name, email),
+          scholarships (title)
+        `)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      if (data) {
+        setApplications(data.map(app => ({
+          id: app.id,
+          name: app.profiles?.name || 'Unknown',
+          email: app.profiles?.email || 'N/A',
+          scholarship: app.scholarships?.title || 'Unknown',
+          status: app.status,
+          date: app.created_at,
+          avatar: (app.profiles?.name || 'U').charAt(0)
+        })));
+      }
+    } catch (error: any) {
+      toast({ title: "Fetch Error", description: error.message, variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchApplications();
+  }, []);
+
+  const handleStatusUpdate = async (id: string, newStatus: string) => {
+    try {
+      const { error } = await supabase
+        .from('scholarship_applications')
+        .update({ status: newStatus })
+        .eq('id', id);
+
+      if (error) throw error;
+
+      toast({ title: "Status Updated", description: `Application is now ${newStatus}.` });
+      fetchApplications();
+    } catch (error: any) {
+      toast({ title: "Update Failed", description: error.message, variant: "destructive" });
+    }
+  };
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -38,7 +95,8 @@ export default function AdminApplications() {
 
   const filtered = applications.filter(app =>
     app.name.toLowerCase().includes(search.toLowerCase()) ||
-    app.scholarship.toLowerCase().includes(search.toLowerCase())
+    app.scholarship.toLowerCase().includes(search.toLowerCase()) ||
+    app.email.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -94,7 +152,7 @@ export default function AdminApplications() {
                         {app.avatar}
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-bold text-primary mb-0.5 group-hover:text-secondary transition-colors">{app.name}</span>
+                        <span className="font-bold text-primary mb-0.5 group-hover:text-accent transition-colors">{app.name}</span>
                         <span className="text-xs text-slate-400 flex items-center gap-1"><Mail className="w-3 h-3" /> {app.email}</span>
                       </div>
                     </div>
@@ -113,11 +171,36 @@ export default function AdminApplications() {
                   </td>
                   <td className="px-8 py-5">{getStatusBadge(app.status)}</td>
                   <td className="px-8 py-5 text-right">
-                    <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-all">
-                      <Button size="icon" variant="ghost" className="h-10 w-10 text-slate-400 hover:text-primary"><FileText className="w-4 h-4" /></Button>
-                      <Button size="icon" variant="ghost" className="h-10 w-10 text-slate-400 hover:text-secondary"><ExternalLink className="w-4 h-4" /></Button>
-                      <Button size="icon" variant="ghost" className="h-10 w-10 text-slate-400 hover:text-primary"><MoreVertical className="w-4 h-4" /></Button>
-                    </div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon" className="h-10 w-10 text-slate-400 hover:text-primary rounded-xl">
+                          <MoreVertical className="w-4 h-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="rounded-2xl border-none shadow-xl p-2 min-w-[180px]">
+                        <DropdownMenuItem
+                          className="rounded-xl font-bold cursor-pointer py-3 focus:bg-primary/5 focus:text-primary flex items-center gap-2"
+                          onClick={() => handleStatusUpdate(app.id, 'Reviewing')}
+                        >
+                          <AlertCircle className="w-4 h-4" /> Mark as Reviewing
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          className="rounded-xl font-bold cursor-pointer py-3 focus:bg-green-50 focus:text-green-600 flex items-center gap-2"
+                          onClick={() => handleStatusUpdate(app.id, 'Accepted')}
+                        >
+                          <CheckCircle2 className="w-4 h-4" /> Accept Application
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          className="rounded-xl font-bold cursor-pointer py-3 focus:bg-red-50 focus:text-red-600 flex items-center gap-2"
+                          onClick={() => handleStatusUpdate(app.id, 'Rejected')}
+                        >
+                          <XCircle className="w-4 h-4" /> Reject Application
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="rounded-xl font-bold cursor-pointer py-3 focus:bg-primary/5 focus:text-primary flex items-center gap-2">
+                          <FileText className="w-4 h-4" /> View Full Profile
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </td>
                 </tr>
               ))}

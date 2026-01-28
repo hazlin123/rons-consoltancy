@@ -44,21 +44,29 @@ export const ScholarshipSearch = () => {
   const filteredScholarships = scholarships;
 
   return (
-    <section id="scholarships" className="py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="scholarships" className="py-32 bg-background relative overflow-hidden">
+      {/* Background Decoration */}
+      <div className="absolute top-0 left-[-20%] w-[60%] h-[80%] bg-gradient-to-br from-accent/5 to-transparent rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-[-10%] w-[40%] h-[60%] bg-gradient-to-tl from-primary/5 to-transparent rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header Section */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-4xl mx-auto text-center mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Find Your <span className="text-primary italic">Perfect Match</span>
+            <h2 className="text-5xl md:text-7xl font-display font-black text-primary mb-8 leading-[0.95]">
+              Find Your <br className="hidden md:block" />
+              <span className="italic text-accent">Perfect Scholarship</span>
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Explore hundreds of verified scholarships tailored to your academic profile.
+            <p className="text-xl text-primary/50 leading-relaxed max-w-2xl mx-auto">
+              Access verified funding opportunities from world-class universities.
+              Your journey to global education starts with one search.
             </p>
           </motion.div>
         </div>
@@ -66,10 +74,11 @@ export const ScholarshipSearch = () => {
         {/* Search Bar - Travel Booking Style */}
         <div className="max-w-5xl mx-auto mb-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-3xl md:rounded-full p-2 shadow-soft border border-gray-100 flex flex-col md:flex-row items-stretch md:items-center gap-2 group transition-all duration-300 hover:shadow-hover"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="glass-panel rounded-[2.5rem] p-3 shadow-soft border border-white/40 dark:border-white/10 flex flex-col md:flex-row items-stretch md:items-center gap-2 group transition-all duration-500 hover:shadow-hover dark:bg-card/50"
           >
             {/* Search Input */}
             <div className="flex-grow flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-gray-100">
@@ -122,29 +131,46 @@ export const ScholarshipSearch = () => {
             </div>
 
             {/* Search Button */}
-            <Button size="icon" className="h-12 w-12 md:h-16 md:w-16 rounded-2xl md:rounded-full bg-primary text-white shrink-0 shadow-lg shadow-primary/20 hover:scale-105 transition-transform active:scale-95">
-              <Search className="w-6 h-6 md:w-8 md:h-8" />
+            <Button size="icon" className="h-14 w-14 md:h-18 md:w-18 rounded-2xl md:rounded-[1.5rem] bg-primary text-white shrink-0 shadow-2xl shadow-primary/20 hover:scale-105 transition-all active:scale-95">
+              <Search className="w-6 h-6 md:w-7 md:h-7" />
             </Button>
           </motion.div>
         </div>
 
         {/* Results Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.15 }
+            }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+        >
           {filteredScholarships.map((scholarship, index) => (
             <motion.div
               key={scholarship.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              variants={{
+                hidden: { opacity: 0, y: 40, scale: 0.95 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: { type: "spring", stiffness: 100, damping: 20 }
+                }
+              }}
             >
               <ScholarshipCard scholarship={scholarship} />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {filteredScholarships.length === 0 && (
-          <div className="text-center py-24 bg-white rounded-3xl border border-dashed border-gray-200">
+          <div className="text-center py-24 bg-white dark:bg-card rounded-3xl border border-dashed border-gray-200 dark:border-border">
             <Search className="w-16 h-16 mx-auto text-gray-200 mb-4" />
             <h3 className="text-2xl font-bold text-foreground mb-2">No scholarships found</h3>
             <p className="text-muted-foreground">Try adjusting your destinations or filters.</p>

@@ -16,6 +16,7 @@ import {
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export const AdminLayout = () => {
     const { user, logout } = useAuth();
@@ -36,11 +37,10 @@ export const AdminLayout = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-[#F9FAFB] font-sans">
-
+        <div className="flex min-h-screen bg-background font-sans">
             {/* Admin Sidebar - Dark Red Palette */}
             <aside
-                className={`fixed left-0 top-0 h-screen bg-primary text-white z-50 transition-all duration-300 border-r border-white/5 shadow-2xl ${isSidebarOpen ? "w-72" : "w-20"}`}
+                className={`fixed left-0 top-0 h-screen bg-primary text-white z-50 transition-all duration-300 border-r border-white/5 shadow-2xl ${isSidebarOpen ? "w-72" : "w-20"} dark:bg-card dark:border-border`}
             >
                 <div className="flex flex-col h-full">
                     {/* Sidebar Header */}
@@ -51,8 +51,8 @@ export const AdminLayout = () => {
                             </div>
                             {isSidebarOpen && (
                                 <div className="flex flex-col">
-                                    <span className="font-black text-lg tracking-tighter leading-none text-secondary">ADMIN</span>
-                                    <span className="text-[10px] font-bold text-white/60 uppercase tracking-widest uppercase italic">Future Bridge</span>
+                                    <span className="font-display font-black text-xl tracking-tighter leading-none text-secondary italic">ADMIN</span>
+                                    <span className="text-[9px] font-bold text-white/50 uppercase tracking-[0.3em] font-sans">Future Bridge</span>
                                 </div>
                             )}
                         </Link>
@@ -91,8 +91,8 @@ export const AdminLayout = () => {
                             </Avatar>
                             {isSidebarOpen && (
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-xs font-black text-white truncate">{user?.name || "Admin User"}</p>
-                                    <p className="text-[9px] text-secondary/60 uppercase tracking-widest font-black">System Admin</p>
+                                    <p className="text-xs font-display font-black text-white truncate italic tracking-tight">{user?.name || "Admin User"}</p>
+                                    <p className="text-[9px] text-secondary/40 uppercase tracking-[0.3em] font-bold">System Curator</p>
                                 </div>
                             )}
                             {isSidebarOpen && (
@@ -111,11 +111,11 @@ export const AdminLayout = () => {
             {/* Main Content Area */}
             <div className={`flex-grow transition-all duration-300 ${isSidebarOpen ? "ml-72" : "ml-20"}`}>
                 {/* Admin Top Header - Cream Accents */}
-                <header className="h-24 bg-white/80 backdrop-blur-xl border-b border-[#F1F5F9] sticky top-0 z-40 px-10 flex items-center justify-between">
+                <header className="h-24 bg-white/80 dark:bg-background/80 backdrop-blur-xl border-b border-[#F1F5F9] dark:border-border sticky top-0 z-40 px-10 flex items-center justify-between">
                     <div className="flex items-center gap-6">
                         <button
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            className="p-3 bg-[#F1F5F9] text-primary rounded-2xl hover:bg-secondary transition-colors shadow-sm"
+                            className="p-3 bg-[#F1F5F9] text-primary rounded-2xl hover:bg-primary/5 transition-colors shadow-sm"
                         >
                             {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
@@ -127,22 +127,24 @@ export const AdminLayout = () => {
                     </div>
 
                     <div className="flex items-center gap-8">
-                        <div className="hidden md:flex items-center bg-[#F9FAFB] border border-[#F1F5F9] rounded-2xl px-5 py-3 w-[450px] shadow-sm focus-within:ring-2 ring-primary/5 transition-all">
+                        <div className="hidden md:flex items-center bg-[#F9FAFB] dark:bg-muted border border-[#F1F5F9] dark:border-border rounded-2xl px-5 py-3 w-[450px] shadow-sm focus-within:ring-2 ring-primary/5 transition-all">
                             <Search className="w-4 h-4 text-slate-400" />
                             <input
                                 placeholder="Search students, scholarships, operations..."
-                                className="bg-transparent border-none focus:ring-0 text-xs w-full ml-4 font-bold text-slate-600 uppercase tracking-wider"
+                                className="bg-transparent border-none focus:ring-0 text-xs w-full ml-4 font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider placeholder:text-slate-400"
                             />
                         </div>
 
                         <div className="flex items-center gap-4">
-                            <button className="relative p-3 bg-[#F1F5F9] text-slate-400 hover:text-primary hover:bg-secondary rounded-2xl transition-all shadow-sm">
+                            <ModeToggle />
+                            <div className="h-10 w-px bg-slate-200" />
+                            <button className="relative p-3 bg-primary/5 text-primary hover:bg-primary hover:text-white rounded-2xl transition-all duration-500 shadow-sm">
                                 <Bell className="w-5 h-5" />
-                                <span className="absolute top-3 right-3 w-2.5 h-2.5 bg-primary rounded-full border-2 border-white" />
+                                <span className="absolute top-3 right-3 w-2.5 h-2.5 bg-accent rounded-full border-2 border-white shadow-soft" />
                             </button>
                             <div className="h-10 w-px bg-slate-200" />
                             <Link to="/">
-                                <Button variant="ghost" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary hover:bg-secondary rounded-2xl px-6">
+                                <Button variant="ghost" className="text-xs font-black uppercase tracking-widest text-slate-500 hover:text-primary hover:bg-primary/5 rounded-2xl px-6">
                                     Live Site
                                 </Button>
                             </Link>

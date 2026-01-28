@@ -11,7 +11,7 @@ interface ScholarshipCardProps {
 
 export const ScholarshipCard = ({ scholarship }: ScholarshipCardProps) => {
     return (
-        <Card className="group overflow-hidden border-none rounded-3xl shadow-soft hover:shadow-hover transition-all duration-500 bg-white flex flex-col h-full transform hover:-translate-y-1">
+        <Card className="group overflow-hidden border border-white/40 rounded-[2.5rem] shadow-soft hover:shadow-hover transition-all duration-700 bg-white flex flex-col h-full transform hover:-translate-y-2">
             {/* Header/Image Area */}
             <CardHeader className="p-0 relative aspect-[16/10] bg-slate-100 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
@@ -44,7 +44,7 @@ export const ScholarshipCard = ({ scholarship }: ScholarshipCardProps) => {
 
                 {scholarship.featured && (
                     <div className="absolute bottom-4 left-4 z-20">
-                        <div className="bg-secondary text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-lg">
+                        <div className="bg-primary text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-lg">
                             Featured
                         </div>
                     </div>
@@ -59,7 +59,7 @@ export const ScholarshipCard = ({ scholarship }: ScholarshipCardProps) => {
                     </div>
                 </div>
 
-                <h3 className="text-2xl font-black text-foreground mb-4 line-clamp-2 leading-tight group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-display font-black text-primary mb-4 line-clamp-2 leading-tight group-hover:text-accent transition-colors italic">
                     {scholarship.title}
                 </h3>
 
@@ -74,7 +74,7 @@ export const ScholarshipCard = ({ scholarship }: ScholarshipCardProps) => {
                     </div>
 
                     <Link to={`/scholarships/${scholarship.id}`}>
-                        <Button size="icon" className="h-12 w-12 rounded-2xl bg-slate-50 text-primary hover:bg-primary hover:text-white transition-all shadow-none">
+                        <Button size="icon" className="h-14 w-14 rounded-[1.25rem] bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all shadow-none">
                             <ArrowRight className="w-6 h-6" />
                         </Button>
                     </Link>

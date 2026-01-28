@@ -45,6 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             setUser({
                 id: session.user.id,
+                studentId: profile?.student_id,
                 name: profile?.name || session.user.user_metadata.name || "User",
                 email: session.user.email || "",
                 role: role as 'admin' | 'student',
@@ -92,6 +93,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
                 setUser({
                     id: data.user.id,
+                    studentId: profile?.student_id,
                     name: profile?.name || data.user.user_metadata.name || "User",
                     email: data.user.email || "",
                     role: role as 'admin' | 'student',
