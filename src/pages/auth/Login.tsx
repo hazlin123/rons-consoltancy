@@ -7,7 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { GraduationCap, ArrowLeft, Lock, Mail } from "lucide-react";
+import { GraduationCap, ArrowLeft, Lock, Mail, BookOpen, Globe } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -69,13 +69,50 @@ export default function Login() {
                     <GraduationCap className="w-20 h-20 text-secondary mx-auto mb-8" />
                     <h1 className="text-5xl font-bold text-white mb-6 font-display italic">Rons Future Bridge</h1>
                     <p className="text-xl text-primary-foreground/70 leading-relaxed font-light">
-                        Access exclusive scholarships and expert guidance to fund your global education dreams.
+                        Master IELTS, discover global scholarships, and unlock your international education journey with expert guidance.
                     </p>
                 </div>
 
                 <div className="absolute bottom-12 left-12 flex gap-8">
                     <div className="text-white/40 text-xs tracking-widest uppercase font-bold">IELTS Affiliate</div>
                     <div className="text-white/40 text-xs tracking-widest uppercase font-bold">Global Network</div>
+                </div>
+
+                {/* Floating Service Badges */}
+                <div className="absolute top-20 right-12 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 animate-float">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
+                            <BookOpen className="w-5 h-5 text-secondary" />
+                        </div>
+                        <div>
+                            <p className="text-white font-bold text-sm">IELTS Training</p>
+                            <p className="text-white/50 text-xs">Band 8+ Success</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="absolute bottom-32 right-20 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 animate-float" style={{ animationDelay: '1s' }}>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
+                            <Globe className="w-5 h-5 text-secondary" />
+                        </div>
+                        <div>
+                            <p className="text-white font-bold text-sm">Scholarship Search</p>
+                            <p className="text-white/50 text-xs">500+ Opportunities</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="absolute top-1/2 right-8 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 animate-float" style={{ animationDelay: '2s' }}>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
+                            <ArrowLeft className="w-5 h-5 text-secondary rotate-180" />
+                        </div>
+                        <div>
+                            <p className="text-white font-bold text-sm">Visa Guidance</p>
+                            <p className="text-white/50 text-xs">Expert Support</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

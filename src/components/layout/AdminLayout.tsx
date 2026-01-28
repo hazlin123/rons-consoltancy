@@ -115,14 +115,14 @@ export const AdminLayout = () => {
                     <div className="flex items-center gap-6">
                         <button
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            className="p-3 bg-[#F1F5F9] text-primary rounded-2xl hover:bg-primary/5 transition-colors shadow-sm"
+                            className="p-3 bg-[#F1F5F9] dark:bg-muted text-primary rounded-2xl hover:bg-primary/5 transition-colors shadow-sm"
                         >
                             {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
                         <div className="h-8 w-px bg-slate-200 hidden md:block" />
                         <div className="hidden lg:flex flex-col">
-                            <h2 className="text-lg font-black text-primary tracking-tight leading-none italic uppercase">Dashboard</h2>
-                            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Management Overview</p>
+                            <h2 className="text-lg font-black text-primary dark:text-foreground tracking-tight leading-none italic uppercase">Dashboard</h2>
+                            <p className="text-[10px] text-slate-400 dark:text-muted-foreground font-bold uppercase tracking-widest">Management Overview</p>
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@ export const AdminLayout = () => {
                             <Search className="w-4 h-4 text-slate-400" />
                             <input
                                 placeholder="Search students, scholarships, operations..."
-                                className="bg-transparent border-none focus:ring-0 text-xs w-full ml-4 font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider placeholder:text-slate-400"
+                                className="bg-transparent border-none focus:ring-0 text-xs w-full ml-4 font-bold text-slate-600 dark:text-foreground uppercase tracking-wider placeholder:text-slate-400 dark:placeholder:text-muted-foreground"
                             />
                         </div>
 

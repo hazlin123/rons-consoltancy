@@ -162,13 +162,13 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold font-display tracking-tight text-slate-900">
+          <h1 className="text-3xl font-bold font-display tracking-tight text-slate-900 dark:text-foreground">
             {greeting}, {user?.name?.split(' ')[0] || 'Admin'}!
           </h1>
-          <p className="text-slate-500 mt-2">Here's what's happening in your academy today.</p>
+          <p className="text-slate-500 dark:text-muted-foreground mt-2">Here's what's happening in your academy today.</p>
         </div>
         <div className="hidden md:block">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-muted text-slate-600 dark:text-foreground">
             {new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </span>
         </div>
@@ -177,12 +177,12 @@ export default function AdminDashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="border-none shadow-xl shadow-slate-200/60 hover:shadow-2xl hover:shadow-slate-200/40 transition-all duration-300 group overflow-hidden relative">
+          <Card key={index} className="border-none shadow-xl shadow-slate-200/60 dark:shadow-none hover:shadow-2xl hover:shadow-slate-200/40 dark:hover:shadow-none transition-all duration-300 group overflow-hidden relative dark:bg-card">
             <div className={`absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity ${stat.color}`}>
               <stat.icon className="w-24 h-24" />
             </div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-slate-500">
+              <CardTitle className="text-sm font-medium text-slate-500 dark:text-muted-foreground">
                 {stat.label}
               </CardTitle>
               <div className={`p-2.5 rounded-xl ${stat.bg} ${stat.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -190,7 +190,7 @@ export default function AdminDashboard() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold font-display text-slate-900 mb-1 tracking-tight">{stat.value}</div>
+              <div className="text-3xl font-bold font-display text-slate-900 dark:text-foreground mb-1 tracking-tight">{stat.value}</div>
               <div className="flex items-center text-xs">
                 {stat.trend === 'Live' ? (
                   <span className="text-emerald-600 flex items-center font-bold bg-emerald-50 px-2 py-0.5 rounded-full">
@@ -210,7 +210,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Recent Applications */}
         <div className="lg:col-span-2 space-y-8">
-          <Card className="border-none shadow-xl shadow-slate-200/60">
+          <Card className="border-none shadow-xl shadow-slate-200/60 dark:shadow-none dark:bg-card">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-xl font-bold font-display">Recent Applications</CardTitle>
@@ -231,8 +231,8 @@ export default function AdminDashboard() {
                         {activity.avatar}
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-900 group-hover:text-primary transition-colors">{activity.name}</p>
-                        <p className="text-xs text-slate-500">{activity.amount}</p>
+                        <p className="text-sm font-bold text-slate-900 dark:text-foreground group-hover:text-primary transition-colors">{activity.name}</p>
+                        <p className="text-xs text-slate-500 dark:text-muted-foreground">{activity.amount}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -279,7 +279,7 @@ export default function AdminDashboard() {
             </div>
           </Card>
 
-          <Card className="border-none shadow-2xl shadow-slate-200/40 rounded-[2.5rem] p-8">
+          <Card className="border-none shadow-2xl shadow-slate-200/40 dark:shadow-none rounded-[2.5rem] p-8 dark:bg-card">
             <h3 className="text-xl font-bold text-primary mb-2 font-display">System Health</h3>
             <div className="flex items-center gap-2 mb-6 text-green-600 font-bold text-xs uppercase tracking-widest">
               <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse" />
