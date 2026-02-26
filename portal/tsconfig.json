@@ -1,16 +1,49 @@
 {
-    "extends": "../../packages/config/tsconfig.base.json",
     "compilerOptions": {
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ESNext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
         "baseUrl": ".",
-        "paths": {
-            "@/*": [
-                "./src/*"
-            ]
-        },
         "types": [
             "vite/client",
             "node"
-        ]
+        ],
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ],
+            "@rons/ui": [
+                "./src/@rons/ui/index"
+            ],
+            "@rons/ui/*": [
+                "./src/@rons/ui/*"
+            ],
+            "@rons/config": [
+                "./src/@rons/config/tailwind.config"
+            ],
+            "@rons/utils": [
+                "./src/@rons/utils/index"
+            ],
+            "@rons/utils/*": [
+                "./src/@rons/utils/*"
+            ]
+        }
     },
     "include": [
         "src"
