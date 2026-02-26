@@ -1,5 +1,0 @@
-﻿
-> rons-future-bridge@1.0.0 build C:\Users\eleaz\OneDrive\Desktop\ielts project
-> pnpm --parallel --filter './apps/*' build
-
-No projects matched the filters in "C:\Users\eleaz\OneDrive\Desktop\ielts project"

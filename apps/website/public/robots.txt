@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://ronsfuturebridge.com/sitemap.xml

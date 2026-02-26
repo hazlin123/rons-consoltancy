@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
+    "website",
+    "portal",
+    "api",
     "packages/*"
   ],
   "description": "Monorepo for Rons Future Bridge Consultancy - Website and Admin Portal",
   "scripts": {
     "dev:website": "pnpm --filter website dev",
     "dev:portal": "pnpm --filter portal dev",
-    "dev": "pnpm --parallel --filter './apps/*' dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev": "pnpm --parallel --filter website --filter portal --filter api dev",
     "build:website": "pnpm --filter website build",
     "build:portal": "pnpm --filter portal build",
-    "build": "pnpm --parallel --filter './apps/*' build",
+    "build:api": "pnpm --filter api build",
+    "build": "pnpm --parallel --filter website --filter portal --filter api build",
     "preview:website": "pnpm --filter website preview",
     "preview:portal": "pnpm --filter portal preview"
   },
