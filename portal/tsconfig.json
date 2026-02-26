@@ -29,19 +29,19 @@
                 "./src/*"
             ],
             "@rons/ui": [
-                "./src/@rons/ui/index"
+                "./src/lib/ui/index.ts"
             ],
             "@rons/ui/*": [
-                "./src/@rons/ui/*"
-            ],
-            "@rons/config": [
-                "./src/@rons/config/tailwind.config"
+                "./src/lib/ui/*"
             ],
             "@rons/utils": [
-                "./src/@rons/utils/index"
+                "./src/lib/utils-pkg/index.ts"
             ],
             "@rons/utils/*": [
-                "./src/@rons/utils/*"
+                "./src/lib/utils-pkg/*"
+            ],
+            "@rons/config": [
+                "./src/lib/utils-pkg/index.ts"
             ]
         }
     },

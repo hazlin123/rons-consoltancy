@@ -7,9 +7,9 @@ export default defineConfig({
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),
-            "@rons/ui": path.resolve(__dirname, "./src/@rons/ui"),
-            "@rons/config": path.resolve(__dirname, "./src/@rons/config"),
-            "@rons/utils": path.resolve(__dirname, "./src/@rons/utils"),
+            "@rons/ui": path.resolve(__dirname, "./src/lib/ui/index.ts"),
+            "@rons/utils": path.resolve(__dirname, "./src/lib/utils-pkg/index.ts"),
+            "@rons/config": path.resolve(__dirname, "./src/lib/utils-pkg"),
         },
     },
     server: {
