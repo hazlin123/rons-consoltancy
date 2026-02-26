@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs/promises";
 import path from "path";
@@ -32,12 +32,12 @@ const writeData = async (data: Scholarship[]) => {
   await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2));
 };
 
-router.get("/", async (_req, res) => {
+router.get("/", async (_req: Request, res: Response) => {
   const store = await readData();
   res.json(store);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", async (req: Request, res: Response) => {
   const store = await readData();
   const data = req.body as Partial<Scholarship>;
   const item: Scholarship = {
@@ -53,14 +53,14 @@ router.post("/", async (req, res) => {
   res.status(201).json(item);
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req: Request, res: Response) => {
   const store = await readData();
   const found = store.find((s) => s.id === req.params.id);
   if (!found) return res.status(404).json({ error: "Not found" });
   return res.json(found);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", async (req: Request, res: Response) => {
   const store = await readData();
   const idx = store.findIndex((s) => s.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: "Not found" });
@@ -69,7 +69,7 @@ router.put("/:id", async (req, res) => {
   return res.json(store[idx]);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req: Request, res: Response) => {
   const store = await readData();
   const idx = store.findIndex((s) => s.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: "Not found" });

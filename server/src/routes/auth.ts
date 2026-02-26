@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Request, Response } from "express";
 
 const router = express.Router();
 
 // Simple env-driven credential check for starter projects only
-router.post("/login", (req, res) => {
+router.post("/login", (req: Request, res: Response) => {
   const { username, password } = req.body as { username?: string; password?: string };
   const envUser = process.env.ADMIN_USER || "admin";
   const envPass = process.env.ADMIN_PASS || "password";

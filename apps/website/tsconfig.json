@@ -1,0 +1,28 @@
+{
+  "extends": "../../packages/config/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@rons/ui": [
+        "../../packages/ui/src"
+      ],
+      "@rons/utils": [
+        "../../packages/utils/src"
+      ],
+      "@rons/config": [
+        "../../packages/config"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
@@ -14,9 +14,9 @@ type Application = {
 
 const store: Application[] = [];
 
-router.get("/", (_req, res) => res.json(store));
+router.get("/", (_req: Request, res: Response) => res.json(store));
 
-router.post("/", (req, res) => {
+router.post("/", (req: Request, res: Response) => {
   const data = req.body as Partial<Application>;
   const app: Application = {
     id: uuidv4(),
@@ -30,13 +30,13 @@ router.post("/", (req, res) => {
   res.status(201).json(app);
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req: Request, res: Response) => {
   const found = store.find((a) => a.id === req.params.id);
   if (!found) return res.status(404).json({ error: "Not found" });
   return res.json(found);
 });
 
-router.put("/:id/status", (req, res) => {
+router.put("/:id/status", (req: Request, res: Response) => {
   const { status } = req.body as { status?: Application['status'] };
   const idx = store.findIndex((a) => a.id === req.params.id);
   if (idx === -1) return res.status(404).json({ error: "Not found" });

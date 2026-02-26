@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
@@ -11,11 +11,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/health", (_req, res) => res.json({ status: "ok" }));
+app.get("/health", (_req: Request, res: Response) => res.json({ status: "ok" }));
 
 app.use("/auth", authRoutes);
 app.use("/scholarships", scholarshipRoutes);
 app.use("/applications", applicationRoutes);
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`API listening on http://localhost:${port}`));
+
+if (require.main === module) {
+    app.listen(port, () => console.log(`API listening on http://localhost:${port}`));
+}
+
+export default app;

@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Luna Palette - Dark Mode */
+    --background: 214 97% 13%;
+    /* #011C40 */
+    --foreground: 210 40% 98%;
+    /* White/Off-white */
+
+    --card: 203 96% 18%;
+    /* #023859 */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 203 96% 18%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 191 47% 54%;
+    /* #54ACBF */
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 203 57% 35%;
+    /* #26658C */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 214 97% 10%;
+    /* Darker Navy */
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 186 73% 80%;
+    /* #A7EBF2 */
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 203 57% 35%;
+    /* Match Secondary */
+    --input: 203 57% 35%;
+    --ring: 191 47% 54%;
+
+    --radius: 1rem;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+}
+
+/* Modern Design System Tokens */
+.modern-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.modern-glass-dark {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/5;
+}
+
+.modern-card {
+    @apply bg-card border border-white/10 rounded-3xl overflow-hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.modern-card:hover {
+    @apply border-primary/20 -translate-y-1;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.modern-stat-card {
+    @apply relative p-6 rounded-[2rem] border border-white/5 bg-white/5 backdrop-blur-sm shadow-sm;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.modern-stat-card:hover {
+    @apply border-white/20 scale-[1.02];
+}
+
+/* Smooth Button Styles */
+.modern-button {
+    @apply relative px-8 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all duration-500 overflow-hidden flex items-center justify-center gap-3;
+}
+
+.modern-button-primary {
+    @apply modern-button bg-primary text-primary-foreground hover:scale-[1.02] active:scale-[0.98];
+}
+
+.modern-button-primary:hover {
+    box-shadow: 0 10px 20px -5px rgba(153, 205, 216, 0.4);
+}
+
+.modern-button-secondary {
+    @apply modern-button bg-white/5 border border-white/10 text-white hover:bg-white/10;
+}
+
+.modern-button-danger {
+    @apply modern-button bg-red-600/10 border border-red-500/20 text-red-500 hover:bg-red-600/20;
+}
+
+/* Table Refinements */
+.modern-table-container {
+    @apply modern-card border-none;
+}
+
+.modern-table {
+    @apply w-full border-collapse;
+}
+
+.modern-table th {
+    @apply bg-black/20 px-6 py-5 text-left font-bold text-[10px] uppercase tracking-[0.2em] text-muted-foreground;
+}
+
+.modern-table td {
+    @apply px-6 py-5 border-b border-white/5 text-sm font-medium text-foreground transition-colors;
+}
+
+.modern-table tr:last-child td {
+    @apply border-none;
+}
+
+.modern-table tr:hover td {
+    @apply bg-white/5;
+}
+
+/* Form Styles */
+.modern-input-group {
+    @apply space-y-3;
+}
+
+.modern-label {
+    @apply text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1;
+}
+
+.modern-input {
+    @apply w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 text-sm font-medium transition-all duration-300 placeholder:text-white/20 text-white;
+}
+
+.modern-input:focus {
+    @apply outline-none border-primary ring-4 ring-primary/10 bg-black/40;
+}
+
+.modern-select {
+    @apply w-full bg-black/20 border border-white/10 rounded-2xl px-5 py-4 text-sm font-medium transition-all duration-300 cursor-pointer text-white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 9-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.25rem center;
+    background-size: 1.25rem;
+}
+
+.modern-select:focus {
+    @apply outline-none border-primary ring-4 ring-primary/10 bg-black/40;
+}
+
+/* Badge Styles */
+.modern-badge {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider border;
+}
+
+.modern-badge-success {
+    @apply bg-green-500/10 border-green-500/20 text-green-400;
+}
+
+.modern-badge-warning {
+    @apply bg-amber-500/10 border-amber-500/20 text-amber-400;
+}
+
+.modern-badge-error {
+    @apply bg-red-500/10 border-red-500/20 text-red-400;
+}
+
+/* Section Header */
+.modern-section-header {
+    @apply flex items-center justify-between py-6 px-1;
+}
+
+.modern-section-title {
+    @apply flex items-center gap-4 text-xl font-bold tracking-tight text-white;
+}
+
+/* KPI Stat Layout */
+.modern-stat-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full border-2 border-[#0c0d12];
+    transition: all 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-fade-in-scale {
+    animation: fadeInScale 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Utility: Gradient Text */
+.text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#99CDD8] via-[#F3C3B2] to-[#DAEBE3];
+}
+
+/* Page Setup */
+.modern-page {
+    @apply max-w-7xl mx-auto px-6 py-8;
+}
+
+/* Layout Specifics */
+.modern-sidebar {
+    @apply w-72 h-screen modern-glass-dark fixed left-0 top-0 border-r border-white/5;
+}
+
+.modern-header {
+    @apply h-24 modern-glass border-b border-white/5 sticky top-0 z-50 px-8 flex items-center justify-between;
+}
+
+/* Legacy Overrides (to avoid breaking things mid-transition) */
+.legacy-panel,
+.legacy-card,
+.legacy-page,
+.legacy-stat-card {
+    @apply modern-card p-6;
+    box-shadow: none;
+    border-radius: 1.5rem;
+}
+
+.legacy-button,
+.legacy-button-secondary,
+.legacy-button-danger,
+.legacy-button-success {
+    @apply modern-button;
+    box-shadow: none;
+    border-radius: 1rem;
+}
+
+.legacy-table-container {
+    @apply modern-table-container;
+}
+
+.legacy-table {
+    @apply modern-table;
+}
+
+.legacy-input,
+.legacy-select {
+    @apply modern-input;
+}
+
+.legacy-badge {
+    @apply modern-badge;
+}
+
+.legacy-section-header {
+    @apply modern-section-header bg-transparent border-none shadow-none text-white p-0 px-2;
+}
+
+.legacy-label {
+    @apply modern-label;
+}
