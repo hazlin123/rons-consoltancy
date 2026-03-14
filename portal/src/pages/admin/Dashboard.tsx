@@ -169,17 +169,18 @@ const Dashboard = () => {
     );
 
     const exportToCSV = () => {
-        const headers = ["Client Name", "Location", "Current Stage", "Last Updated"];
-        const csvData = filteredClients.map((row: Client) => [
-            row.full_name,
-            row.county || "N/A",
-            row.current_stage || "Registered",
-            format(new Date(row.updated_at), "dd/MM/yyyy")
+        const headers = ["Full Name", "Email", "Phone", "County", "Current Stage"];
+        const csvData = clients.map(c => [
+            c.full_name,
+            c.email || "N/A",
+            c.phone || "N/A",
+            c.county,
+            c.current_stage
         ]);
 
         const csvContent = [
             headers.join(","),
-            ...csvData.map((row: string[]) => row.join(","))
+            ...csvData.map((row) => row.join(","))
         ].join("\n");
 
         const blob = new Blob([csvContent], { type: 'text/csv' });
@@ -563,10 +564,15 @@ const Dashboard = () => {
                                         >
                                             <td>
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-xs shrink-0 ring-1 ring-primary/20">
+                                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-xs shrink-0 ring-1 ring-primary/20 no-print">
                                                         {client.full_name.charAt(0)}
                                                     </div>
-                                                    <span className="text-white font-bold">{client.full_name}</span>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-white font-bold">{client.full_name}</span>
+                                                        <span className="text-[10px] text-muted-foreground font-medium sm:hidden print:block">
+                                                            {client.email || client.phone}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </td>
 

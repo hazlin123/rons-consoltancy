@@ -166,7 +166,7 @@ export const ApplicationForm = ({ scholarshipTitle }: { scholarshipTitle: string
                             <FileUp className="w-12 h-12 text-slate-300 group-hover:text-secondary mb-4 transition-colors" />
                             <div className="text-primary font-bold mb-1">Upload Documents</div>
                             <p className="text-xs text-muted-foreground max-w-[200px]">
-                                PDF, DOCX up to 10MB (CV, Transcripts, ID)
+                                PDF, DOCX up to 10MB (CV, Transcripts, Passport)
                             </p>
                         </div>
 

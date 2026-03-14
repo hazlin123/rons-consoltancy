@@ -165,15 +165,10 @@ const IELTSRegistrationForm = () => {
                     <form onSubmit={handleSubmit} className="modern-card p-10 space-y-8">
                         {/* Registration Type Switcher */}
                         <div className="space-y-6">
-                            <div className="flex items-center gap-4 border-b border-white/5 pb-6 mb-8">
-                                <div className="w-12 h-12 modern-glass rounded-2xl flex items-center justify-center ring-1 ring-primary/10">
-                                    <IdentificationCard className="w-6 h-6 text-primary" weight="duotone" />
-                                </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-white">Registration Type</h3>
+                                    <h3 className="text-xl font-bold text-white">Registration Details</h3>
                                     <p className="text-xs text-muted-foreground font-medium">Is this a new exam or an existing score?</p>
                                 </div>
-                            </div>
 
                             <div className="flex gap-4">
                                 {(['new', 'existing'] as const).map((type) => (
@@ -209,59 +204,47 @@ const IELTSRegistrationForm = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="modern-input-group">
                                             <label className="modern-label">Exam Date</label>
-                                            <div className="relative">
-                                                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                                 <input
-                                                    type="date"
-                                                    className="modern-input pl-12"
-                                                    value={formData.exam_date || ""}
-                                                    onChange={(e) => setFormData({ ...formData, exam_date: e.target.value })}
-                                                />
-                                            </div>
+                                            type="date"
+                                            className="modern-input"
+                                            value={formData.exam_date || ""}
+                                            onChange={(e) => setFormData({ ...formData, exam_date: e.target.value })}
+                                        />
                                         </div>
                                         <div className="modern-input-group">
                                             <label className="modern-label">Test Center</label>
-                                            <div className="relative">
-                                                <Buildings className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                                 <input
-                                                    type="text"
-                                                    className="modern-input pl-12"
-                                                    placeholder="e.g. British Council"
-                                                    value={formData.test_center || ""}
-                                                    onChange={(e) => setFormData({ ...formData, test_center: e.target.value })}
-                                                />
-                                            </div>
+                                            type="text"
+                                            className="modern-input"
+                                            placeholder="e.g. British Council"
+                                            value={formData.test_center || ""}
+                                            onChange={(e) => setFormData({ ...formData, test_center: e.target.value })}
+                                        />
                                         </div>
                                     </div>
                                 ) : (
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="modern-input-group">
                                             <label className="modern-label">Overall Band Score</label>
-                                            <div className="relative">
-                                                <TrendUp className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                                 <input
-                                                    type="number"
-                                                    step="0.5"
-                                                    min="0"
-                                                    max="9"
-                                                    className="modern-input pl-12"
-                                                    placeholder="e.g. 7.5"
-                                                    value={formData.existing_score || ""}
-                                                    onChange={(e) => setFormData({ ...formData, existing_score: parseFloat(e.target.value) || undefined })}
-                                                />
-                                            </div>
+                                            type="number"
+                                            step="0.5"
+                                            min="0"
+                                            max="9"
+                                            className="modern-input"
+                                            placeholder="e.g. 7.5"
+                                            value={formData.existing_score || ""}
+                                            onChange={(e) => setFormData({ ...formData, existing_score: parseFloat(e.target.value) || undefined })}
+                                        />
                                         </div>
                                         <div className="modern-input-group">
                                             <label className="modern-label">Test Date</label>
-                                            <div className="relative">
-                                                <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                                 <input
-                                                    type="date"
-                                                    className="modern-input pl-12"
-                                                    value={formData.existing_test_date || ""}
-                                                    onChange={(e) => setFormData({ ...formData, existing_test_date: e.target.value })}
-                                                />
-                                            </div>
+                                            type="date"
+                                            className="modern-input"
+                                            value={formData.existing_test_date || ""}
+                                            onChange={(e) => setFormData({ ...formData, existing_test_date: e.target.value })}
+                                        />
                                         </div>
                                     </div>
                                 )}
@@ -339,7 +322,7 @@ const IELTSRegistrationForm = () => {
                     </div>
 
                     <div className="p-8 modern-glass rounded-3xl border border-white/5 flex flex-col items-center text-center">
-                        <CheckCircle weight="duotone" className="w-16 h-16 text-primary/20 mb-6" />
+
                         <h4 className="text-white font-bold mb-2">Stage Advancement</h4>
                         <p className="text-xs text-muted-foreground leading-relaxed">
                             Registering a client for IELTS automatically moves them to the <span className="text-primary font-bold">IELTS Stage</span>.

@@ -21,7 +21,8 @@ import {
     Plus,
     Pencil,
     CircleDashed,
-    TrendUp
+    TrendUp,
+    User
 } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
@@ -121,7 +122,7 @@ const ClientProfile = () => {
     );
 
     const stages: { stage: ClientStage; label: string; icon: any; color: string }[] = [
-        { stage: 'registered', label: 'Registration', icon: IdentificationCard, color: '#8a8d98' },
+        { stage: 'registered', label: 'Registration', icon: User, color: '#8a8d98' },
         { stage: 'ielts', label: 'IELTS', icon: ClipboardText, color: '#FFD700' },
         { stage: 'school_application', label: 'School Application', icon: Buildings, color: '#54ACBF' },
         { stage: 'visa', label: 'Visa Processing', icon: Airplane, color: '#A7EBF2' },
@@ -469,9 +470,7 @@ const ClientProfile = () => {
 
                     {/* Quick Actions Card */}
                     <div className="modern-card p-8 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-4 transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-all">
-                            <TrendUp weight="duotone" className="w-12 h-12 text-primary/10 rotate-12" />
-                        </div>
+
                         <h2 className="text-lg font-bold text-white mb-6">Quick Actions</h2>
                         <div className="space-y-3 relative z-10">
                             <button

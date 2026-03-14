@@ -201,7 +201,7 @@ const StudentRegistration = () => {
                                 />
                                 <p className="text-[10px] text-muted-foreground flex items-center gap-2 italic">
                                     <Info className="w-3 h-3" />
-                                    Must exactly match passport or ID card documents
+                                    Must exactly match passport or official documents
                                 </p>
                             </div>
 

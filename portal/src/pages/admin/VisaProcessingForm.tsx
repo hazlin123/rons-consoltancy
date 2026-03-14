@@ -172,30 +172,22 @@ const VisaProcessingForm = () => {
                 >
                     <form onSubmit={handleSubmit} className="modern-card p-10 space-y-8">
                         <div className="space-y-6">
-                            <div className="flex items-center gap-4 border-b border-white/5 pb-6 mb-8">
-                                <div className="w-12 h-12 modern-glass rounded-2xl flex items-center justify-center ring-1 ring-accent/10">
-                                    <IdentificationCard className="w-6 h-6 text-accent" weight="duotone" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-white">Application Details</h3>
-                                    <p className="text-xs text-muted-foreground font-medium">Verify country and visa categories</p>
-                                </div>
+                            <div className="flex flex-col gap-1 border-b border-white/5 pb-6 mb-8">
+                                <h3 className="text-xl font-bold text-white">Application Details</h3>
+                                <p className="text-xs text-muted-foreground font-medium">Verify country and visa categories</p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="modern-input-group">
                                     <label className="modern-label">Target Country *</label>
-                                    <div className="relative">
-                                        <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
-                                        <input
-                                            type="text"
-                                            className="modern-input pl-12"
-                                            placeholder="e.g. Canada"
-                                            value={formData.country}
-                                            onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                                            required
-                                        />
-                                    </div>
+                                    <input
+                                        type="text"
+                                        className="modern-input"
+                                        placeholder="e.g. Canada"
+                                        value={formData.country}
+                                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                                        required
+                                    />
                                 </div>
 
                                 <div className="modern-input-group">
@@ -213,55 +205,46 @@ const VisaProcessingForm = () => {
 
                             <div className="modern-input-group">
                                 <label className="modern-label">Associated School Application (Optional)</label>
-                                <div className="relative">
-                                    <Building className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
-                                    <select
-                                        className="modern-select pl-12"
-                                        value={formData.school_application_id || ""}
-                                        onChange={(e) => {
-                                            const app = schoolApps.find(a => a.id === e.target.value);
-                                            setFormData({
-                                                ...formData,
-                                                school_application_id: e.target.value,
-                                                country: app?.school?.country || formData.country
-                                            });
-                                        }}
-                                    >
-                                        <option value="">-- None / General Application --</option>
-                                        {schoolApps.filter(a => a.status === 'accepted').map((app) => (
-                                            <option key={app.id} value={app.id}>
-                                                {app.school?.name} ({app.program_type})
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
+                                <select
+                                    className="modern-select"
+                                    value={formData.school_application_id || ""}
+                                    onChange={(e) => {
+                                        const app = schoolApps.find(a => a.id === e.target.value);
+                                        setFormData({
+                                            ...formData,
+                                            school_application_id: e.target.value,
+                                            country: app?.school?.country || formData.country
+                                        });
+                                    }}
+                                >
+                                    <option value="">-- None / General Application --</option>
+                                    {schoolApps.filter(a => a.status === 'accepted').map((app) => (
+                                        <option key={app.id} value={app.id}>
+                                            {app.school?.name} ({app.program_type})
+                                        </option>
+                                    ))}
+                                </select>
                                 <p className="text-[10px] text-muted-foreground mt-2 italic px-1">Only accepted applications are shown here.</p>
                             </div>
 
                             <div className="modern-input-group">
                                 <label className="modern-label">Visa Launching Date</label>
-                                <div className="relative">
-                                    <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
-                                    <input
-                                        type="date"
-                                        className="modern-input pl-12"
-                                        value={formData.interview_date || ""}
-                                        onChange={(e) => setFormData({ ...formData, interview_date: e.target.value })}
-                                    />
-                                </div>
+                                <input
+                                    type="date"
+                                    className="modern-input"
+                                    value={formData.interview_date || ""}
+                                    onChange={(e) => setFormData({ ...formData, interview_date: e.target.value })}
+                                />
                             </div>
 
                             <div className="modern-input-group">
                                 <label className="modern-label">Processing Notes</label>
-                                <div className="relative">
-                                    <Notebook className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" weight="duotone" />
-                                    <textarea
-                                        className="modern-input pl-12 min-h-[120px] pt-4"
-                                        placeholder="Document checklist, submission status, etc..."
-                                        value={formData.notes || ""}
-                                        onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                                    />
-                                </div>
+                                <textarea
+                                    className="modern-input min-h-[120px] pt-4"
+                                    placeholder="Document checklist, submission status, etc..."
+                                    value={formData.notes || ""}
+                                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                                />
                             </div>
                         </div>
 
@@ -320,7 +303,7 @@ const VisaProcessingForm = () => {
                     </div>
 
                     <div className="p-8 modern-glass rounded-3xl border border-white/5 flex flex-col items-center text-center">
-                        <Airplane weight="duotone" className="w-16 h-16 text-accent/20 mb-6" />
+
                         <h4 className="text-white font-bold mb-2">Visa Verification</h4>
                         <p className="text-xs text-muted-foreground leading-relaxed">
                             Ensure all original academic documents and proof of funds are verified before submitting the final visa application to the embassy.

@@ -136,46 +136,37 @@ const ClientRegistration = () => {
                             {/* Passport Number */}
                             <div className="modern-input-group">
                                 <label className="modern-label">Passport Number (Optional)</label>
-                                <div className="relative">
-                                    <IdentificationCard className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                     <input
                                         type="text"
-                                        className="modern-input pl-12"
-                                        placeholder="AK123456"
+                                        className="modern-input"
+                                        placeholder="e.g. AK123456"
                                         value={formData.passport_number || ""}
                                         onChange={(e) => setFormData({ ...formData, passport_number: e.target.value })}
                                     />
-                                </div>
                             </div>
 
                             {/* Phone */}
                             <div className="modern-input-group">
                                 <label className="modern-label">Phone Number</label>
-                                <div className="relative">
-                                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                     <input
                                         type="tel"
-                                        className="modern-input pl-12"
+                                        className="modern-input"
                                         placeholder="+254 712 345 678"
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     />
-                                </div>
                             </div>
 
                             {/* Email */}
                             <div className="modern-input-group md:col-span-2">
                                 <label className="modern-label">Email Address</label>
-                                <div className="relative">
-                                    <Envelope className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                     <input
                                         type="email"
-                                        className="modern-input pl-12"
+                                        className="modern-input"
                                         placeholder="john.mwangi@example.com"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     />
-                                </div>
                             </div>
                         </div>
                     </div>
