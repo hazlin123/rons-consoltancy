@@ -154,7 +154,7 @@ const ClientProfile = () => {
                             </div>
                             <p className="text-muted-foreground text-sm font-medium flex items-center gap-2">
                                 <MapPin weight="fill" className="text-primary" />
-                                {client.county}, {client.constituency} • ID: {client.national_id}
+                                {client.county}, {client.constituency}
                                 {client.passport_number && ` • Passport: ${client.passport_number}`}
                             </p>
                         </div>
@@ -398,7 +398,7 @@ const ClientProfile = () => {
                                         <span className="text-white font-bold">{client.visa_application.country}</span>
                                     </div>
                                     <div className="flex justify-between items-center text-xs">
-                                        <span className="text-muted-foreground">Interview:</span>
+                                        <span className="text-muted-foreground">Visa Launching Date:</span>
                                         <span className="text-accent font-bold">{client.visa_application.interview_date || 'TBD'}</span>
                                     </div>
 
@@ -408,7 +408,7 @@ const ClientProfile = () => {
                                             onClick={() => handleUpdateVisaStatus(client.visa_application!.id, 'interview_scheduled')}
                                             className="px-2 py-2 bg-white/5 border border-white/10 rounded-lg text-[9px] font-black uppercase tracking-widest text-white hover:bg-accent/20 hover:border-accent/40 transition-all"
                                         >
-                                            Schedule Interview
+                                            Schedule Launching
                                         </button>
                                         <button
                                             onClick={() => handleUpdateVisaStatus(client.visa_application!.id, 'approved')}
@@ -463,15 +463,7 @@ const ClientProfile = () => {
                                     <p className="text-sm font-bold text-white truncate max-w-[150px]">{client.email || "Not provided"}</p>
                                 </div>
                             </div>
-                            <div className="flex gap-4">
-                                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                    <IdentificationCard weight="duotone" />
-                                </div>
-                                <div>
-                                    <p className="text-[10px] font-black text-muted-foreground uppercase tracking-wider mb-0.5">National ID</p>
-                                    <p className="text-sm font-bold text-white">{client.national_id}</p>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 

@@ -195,7 +195,6 @@ const ClientList = () => {
                                 <thead>
                                     <tr className="border-b border-white/5">
                                         <th className="text-left p-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">Client</th>
-                                        <th className="text-left p-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">National ID</th>
                                         <th className="text-left p-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">Contact</th>
                                         <th className="text-left p-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">Location</th>
                                         <th className="text-center p-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">Stage</th>
@@ -220,14 +219,6 @@ const ClientList = () => {
                                                             {client.full_name.charAt(0)}
                                                         </div>
                                                         <span className="text-white font-bold">{client.full_name}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="p-4">
-                                                    <div className="flex flex-col">
-                                                        <span className="text-muted-foreground text-sm font-mono">{client.national_id}</span>
-                                                        {client.passport_number && (
-                                                            <span className="text-primary text-[10px] font-mono mt-0.5">Passport: {client.passport_number}</span>
-                                                        )}
                                                     </div>
                                                 </td>
                                                 <td className="p-4">

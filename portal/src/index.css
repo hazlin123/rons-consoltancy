@@ -54,6 +54,7 @@
     }
 }
 
+@layer components {
 /* Modern Design System Tokens */
 .modern-glass {
     @apply bg-white/5 backdrop-blur-xl border border-white/10;
@@ -176,6 +177,100 @@
 .modern-badge-error {
     @apply bg-red-500/10 border-red-500/20 text-red-400;
 }
+
+/* Formal Print Report Styles */
+@media print {
+    @page {
+        margin: 1.5cm;
+        size: auto;
+    }
+
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-family: sans-serif !important;
+    }
+
+    /* Hide UI elements */
+    .modern-sidebar,
+    .modern-header,
+    .modern-button,
+    button,
+    .no-print,
+    header,
+    nav,
+    .modern-stat-grid,
+    .modern-section-header,
+    .search-container {
+        display: none !important;
+    }
+
+    .modern-page {
+        @apply p-0 m-0 w-full;
+        background: white !important;
+    }
+
+    .modern-card {
+        @apply border-none shadow-none bg-white p-0 m-0 !important;
+    }
+
+    /* Reference Image Styling: Simple Header */
+    .print-report-header {
+        display: block !important;
+        @apply mb-8;
+    }
+
+    .print-report-header h1 {
+        @apply text-2xl font-bold text-[#26658C] m-0 p-0;
+        border-bottom: 2px solid #26658C;
+        display: inline-block;
+        padding-bottom: 4px;
+        margin-bottom: 20px;
+    }
+
+    .print-report-footer {
+        display: block !important;
+        @apply fixed bottom-0 w-full text-center py-4 border-t border-gray-100 text-[10px] text-gray-400;
+    }
+
+    /* Table Styling to match reference image */
+    .modern-table-container {
+        @apply border-none bg-white !important;
+    }
+
+    .modern-table {
+        @apply w-full border-collapse !important;
+    }
+
+    .modern-table th {
+        @apply bg-[#26658C] text-white font-bold py-3 px-4 text-xs text-left uppercase !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    .modern-table td {
+        @apply border-b border-gray-200 py-3 px-4 text-sm text-black !important;
+    }
+
+    .modern-table tr:nth-child(even) td {
+        @apply bg-gray-50;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Hide non-relevant columns for print */
+    .modern-table th:last-child,
+    .modern-table td:last-child {
+        display: none !important;
+    }
+}
+
+.print-report-header,
+.print-report-footer {
+    display: none;
+}
+
 
 /* Section Header */
 .modern-section-header {
@@ -304,4 +399,5 @@
 
 .legacy-label {
     @apply modern-label;
+}
 }

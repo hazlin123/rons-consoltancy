@@ -40,7 +40,7 @@ export const RedesignedVisa = () => {
                         Bridging <span className="text-[#9BA8AB]/30 text-4xl block">Official Borders</span>
                     </motion.h2>
                     <motion.p variants={item} className="text-para-luxury font-medium opacity-60">
-                        Our specialized consultancy ensures your transition is architected with precision, providing registry-level documentation support and tailored counseling.
+                        Our specialized consultancy ensures your transition is architected with precision, providing expert visa guidance for those seeking seamless methods for traveling to Australia and beyond.
                     </motion.p>
                 </div>
             </div>
@@ -55,7 +55,7 @@ export const RedesignedVisa = () => {
                     {
                         title: "Global Readiness",
                         icon: Globe,
-                        desc: "Preparing you for the international transition with cultural and legal briefs.",
+                        desc: "Preparing you for traveling to Australia and handling international transitions with expert briefs.",
                         image: "/img/australia-study.jpeg"
                     },
                     {

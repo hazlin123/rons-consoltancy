@@ -44,7 +44,7 @@ export const RedesignedAbout = () => {
                         transition={{ delay: 0.6 }}
                         className="text-para-luxury font-medium"
                     >
-                        We are the premiere educational consultancy agency dedicated to guiding students towards academic excellence by providing comprehensive support in securing admission to renowned institutions worldwide.
+                        We are the premiere educational consultancy agency dedicated to guiding students through the complete IELTS process and providing comprehensive support in securing admissions and successfully traveling to Australia and other renowned destinations worldwide.
                     </motion.p>
                 </div>
             </motion.div>

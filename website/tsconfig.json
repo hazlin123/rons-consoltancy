@@ -7,13 +7,13 @@
         "./src/*"
       ],
       "@rons/ui": [
-        "../../packages/ui/src"
+        "../packages/ui/src"
       ],
       "@rons/utils": [
-        "../../packages/utils/src"
+        "../packages/utils/src"
       ],
       "@rons/config": [
-        "../../packages/config"
+        "../packages/config"
       ]
     }
   },

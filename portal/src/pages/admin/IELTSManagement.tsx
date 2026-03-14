@@ -48,8 +48,7 @@ const IELTSManagement = () => {
     const filtered = registrations.filter(reg => {
         const matchesTab = tab === 'all' || reg.status === tab;
         const matchesSearch = searchQuery.trim() === "" ||
-            reg.client?.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            reg.client?.national_id.toLowerCase().includes(searchQuery.toLowerCase());
+            reg.client?.full_name.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesTab && matchesSearch;
     });
 
@@ -183,7 +182,6 @@ const IELTSManagement = () => {
                                             </div>
                                             <div>
                                                 <h3 className="text-white font-bold text-sm leading-tight text-gradient">{reg.client?.full_name}</h3>
-                                                <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-widest">{reg.client?.national_id}</p>
                                             </div>
                                         </div>
 

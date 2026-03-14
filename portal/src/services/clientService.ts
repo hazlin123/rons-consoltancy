@@ -219,7 +219,7 @@ export const clientService = {
         const { data, error } = await supabase
             .from("clients")
             .select("*")
-            .or(`full_name.ilike.%${query}%,national_id.ilike.%${query}%`)
+            .or(`full_name.ilike.%${query}%`)
             .order("created_at", { ascending: false });
 
         if (error) throw error;

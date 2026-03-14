@@ -109,7 +109,7 @@ const VisaProcessing = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
                     {[
                         { label: 'Pending', count: stats.pending, icon: Clock, color: '#8a8d98', filter: 'pending' },
-                        { label: 'Interviews', count: stats.interview, icon: Calendar, color: '#54ACBF', filter: 'interview_scheduled' },
+                        { label: 'Launching', count: stats.interview, icon: Calendar, color: '#54ACBF', filter: 'interview_scheduled' },
                         { label: 'Approved', count: stats.approved, icon: CheckCircle, color: '#10b981', filter: 'approved' },
                         { label: 'Rejected', count: stats.rejected, icon: WarningCircle, color: '#ef4444', filter: 'rejected' },
                     ].map((stat, i) => (
@@ -189,7 +189,7 @@ const VisaProcessing = () => {
                                                         <span className="text-white truncate max-w-[150px]">{visa.school_application?.school?.name || 'General Application'}</span>
                                                     </div>
                                                     <div className="flex justify-between text-[10px] font-bold">
-                                                        <span className="text-muted-foreground">Interview:</span>
+                                                        <span className="text-muted-foreground">Launching Date:</span>
                                                         <span className="text-accent">{visa.interview_date || 'TBD'}</span>
                                                     </div>
                                                 </div>
@@ -200,7 +200,7 @@ const VisaProcessing = () => {
                                                     onClick={() => handleUpdateStatus(visa.id, visa.client?.full_name || 'Client', 'interview_scheduled', visa.client_id)}
                                                     className="px-2 py-2 bg-white/5 border border-white/10 rounded-lg text-[8px] font-black uppercase tracking-tighter text-white hover:bg-accent/20 transition-all"
                                                 >
-                                                    Interview
+                                                    Schedule Launch
                                                 </button>
                                                 <button
                                                     onClick={() => handleUpdateStatus(visa.id, visa.client?.full_name || 'Client', 'approved', visa.client_id)}

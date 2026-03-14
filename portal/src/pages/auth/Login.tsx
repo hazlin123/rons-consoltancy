@@ -105,8 +105,8 @@ const Login = () => {
                     <form onSubmit={handleLogin} className="space-y-5">
                         <div className="space-y-2">
                             <label className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground pl-1">Email Address</label>
-                            <div className="relative group">
-                                <Envelope weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                            <div className="relative group flex items-center">
+                                <Envelope weight="duotone" className="absolute left-4 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors pointer-events-none" />
                                 <input
                                     type="email"
                                     value={email}
@@ -120,8 +120,8 @@ const Login = () => {
 
                         <div className="space-y-2">
                             <label className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground pl-1">Password</label>
-                            <div className="relative group">
-                                <LockKey weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                            <div className="relative group flex items-center">
+                                <LockKey weight="duotone" className="absolute left-4 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors pointer-events-none" />
                                 <input
                                     type="password"
                                     value={password}

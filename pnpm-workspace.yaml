@@ -1,5 +1,9 @@
 packages:
-  - 'website'
-  - 'portal'
-  - 'api'
-  - 'packages/*'
+  - website
+  - portal
+  - api
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@swc/core'
+  - esbuild

@@ -239,7 +239,7 @@ const VisaProcessingForm = () => {
                             </div>
 
                             <div className="modern-input-group">
-                                <label className="modern-label">Interview Date (if scheduled)</label>
+                                <label className="modern-label">Visa Launching Date</label>
                                 <div className="relative">
                                     <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" weight="duotone" />
                                     <input
@@ -312,13 +312,9 @@ const VisaProcessingForm = () => {
                             Client Summary
                         </h3>
                         <div className="space-y-4">
-                            <div className="flex justify-between items-center text-sm py-2 border-b border-white/5">
+                            <div className="flex justify-between items-center text-sm py-2">
                                 <span className="text-muted-foreground">Full Name:</span>
                                 <span className="text-white font-bold">{client?.full_name}</span>
-                            </div>
-                            <div className="flex justify-between items-center text-sm py-2">
-                                <span className="text-muted-foreground">National ID:</span>
-                                <span className="text-white font-mono">{client?.national_id}</span>
                             </div>
                         </div>
                     </div>

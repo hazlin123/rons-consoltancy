@@ -165,17 +165,15 @@ const Dashboard = () => {
 
     const filteredClients = clients.filter((client: Client) =>
         client.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        client.national_id.toLowerCase().includes(searchTerm.toLowerCase()) ||
         client.county?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const exportToCSV = () => {
-        const headers = ["Client Name", "ID", "Location", "Current Stage", "Last Updated"];
+        const headers = ["Client Name", "Location", "Current Stage", "Last Updated"];
         const csvData = filteredClients.map((row: Client) => [
             row.full_name,
-            row.national_id,
-            `${row.county} ${row.constituency ? `> ${row.constituency}` : ''}`,
-            row.current_stage,
+            row.county || "N/A",
+            row.current_stage || "Registered",
             format(new Date(row.updated_at), "dd/MM/yyyy")
         ]);
 
@@ -200,6 +198,14 @@ const Dashboard = () => {
             animate="visible"
             variants={containerVariants}
         >
+            {/* Formal Report Header (Print Only) */}
+            <div className="print-report-header">
+                <h1>CLIENT REGISTRY</h1>
+            </div>
+
+            <div className="print-report-footer">
+                <p>Ron's Consultancy Administrative Report • Confidential • {format(new Date(), "yyyy")}</p>
+            </div>
             {/* Page Header */}
             <motion.div variants={itemVariants} className="modern-section-header">
                 <div>
@@ -506,7 +512,7 @@ const Dashboard = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="modern-card mb-12">
-                <div className="p-6 border-b border-white/5 bg-white/5 flex flex-wrap items-center justify-between gap-4">
+                <div className="p-6 border-b border-white/5 bg-white/5 flex flex-wrap items-center justify-between gap-4 no-print">
                     <div className="relative w-72">
                         <MagnifyingGlass weight="duotone" className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <input
@@ -524,7 +530,6 @@ const Dashboard = () => {
                         <thead>
                             <tr>
                                 <th>Client Identity</th>
-                                <th>National ID</th>
                                 <th>Regional Location</th>
                                 <th className="text-center">Current Stage</th>
                                 <th>Last Updated</th>
@@ -564,14 +569,7 @@ const Dashboard = () => {
                                                     <span className="text-white font-bold">{client.full_name}</span>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div className="flex flex-col">
-                                                    <span className="text-muted-foreground text-xs font-mono">{client.national_id}</span>
-                                                    {client.passport_number && (
-                                                        <span className="text-primary text-[9px] font-mono mt-0.5">PSP: {client.passport_number}</span>
-                                                    )}
-                                                </div>
-                                            </td>
+
                                             <td>
                                                 <div className="flex flex-col">
                                                     <span className="text-white text-xs font-bold">{client.county}</span>

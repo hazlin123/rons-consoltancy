@@ -65,9 +65,6 @@ const StudentRegistration = () => {
             if (!formData.fullName.trim()) {
                 throw new Error("Student Name is required. Please go back to Step 1.");
             }
-            if (!formData.nationalId.trim()) {
-                throw new Error("National ID is required. Please go back to Step 1.");
-            }
             if (!formData.category) {
                 throw new Error("Service Category is required. Please go back to Step 2.");
             }
@@ -82,7 +79,7 @@ const StudentRegistration = () => {
                 .from("clients")
                 .insert([{
                     full_name: formData.fullName,
-                    national_id: formData.nationalId,
+                    national_id: `TEMP_${Date.now()}`,
                     passport_number: formData.passportNumber || null,
                     current_stage: formData.category === 'New IELTS' ? 'ielts'
                         : formData.category === 'Visa Application' ? 'visa'
@@ -208,21 +205,7 @@ const StudentRegistration = () => {
                                 </p>
                             </div>
 
-                            <div className="modern-input-group">
-                                <label className="modern-label">Kenyan National ID Number</label>
-                                <input
-                                    type="text"
-                                    className="modern-input"
-                                    placeholder="e.g. 12345678"
-                                    value={formData.nationalId}
-                                    onChange={(e) => setFormData({ ...formData, nationalId: e.target.value })}
-                                    maxLength={8}
-                                />
-                                <p className="text-[10px] text-muted-foreground flex items-center gap-2 italic">
-                                    <Info className="w-3 h-3" />
-                                    8-digit Kenyan National ID number
-                                </p>
-                            </div>
+
 
                             <div className="modern-input-group">
                                 <label className="modern-label">Passport Number (Optional)</label>

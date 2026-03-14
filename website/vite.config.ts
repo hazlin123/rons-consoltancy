@@ -22,9 +22,9 @@ export default defineConfig({
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),
-            "@rons/ui": path.resolve(__dirname, "../../packages/ui/src"),
-            "@rons/utils": path.resolve(__dirname, "../../packages/utils/src"),
-            "@rons/config": path.resolve(__dirname, "../../packages/config"),
+            "@rons/ui": path.resolve(__dirname, "../packages/ui/src"),
+            "@rons/utils": path.resolve(__dirname, "../packages/utils/src"),
+            "@rons/config": path.resolve(__dirname, "../packages/config"),
         },
     },
 });

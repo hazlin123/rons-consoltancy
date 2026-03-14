@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const userEmail = session.user.email?.trim().toLowerCase();
 
             // Fail-safe for designated Admin email
-            if (userEmail === 'eleazerlagat60@gmail.com' || userEmail?.includes('eleazerlagat60')) {
+            if (userEmail === 'ronsfuturebridge7@gmail.com' || userEmail?.includes('ronsfuturebridge7')) {
                 console.log("[AuthContext] Admin email detected via fail-safe.");
                 role = 'admin';
                 // Proactively update DB if role is student or profile missing
@@ -148,7 +148,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             logout,
             loading,
             isAuthenticated: !!user,
-            isAdmin: user?.role === 'admin' || user?.email?.toLowerCase().trim() === 'eleazerlagat60@gmail.com'
+            isAdmin: user?.role === 'admin' || user?.email?.toLowerCase().trim() === 'ronsfuturebridge7@gmail.com'
         }}>
             {children}
         </AuthContext.Provider>

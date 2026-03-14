@@ -35,9 +35,9 @@ export const RedesignedHero = () => {
                     <div className="text-num-condensed" style={{ fontSize: '6rem' }}>01</div>
                     <div className="hidden lg:grid grid-cols-2 gap-x-12 gap-y-2 max-w-sm mt-4">
                         {[
-                            { label: "Elite Training", val: "Ron's Futurebridge" },
-                            { label: "Success Rate:", val: "100% VERIFIED" },
-                            { label: "Status:", val: "#1 STUDY ABROAD PARTNER" },
+                            { label: "Expertise:", val: "IELTS Process" },
+                            { label: "Consultancy:", val: "100% VERIFIED" },
+                            { label: "Specialty:", val: "Traveling to Australia" },
                             { label: "Location:", val: "Eldoret Hub Node" }
                         ].map((detail, idx) => (
                             <motion.div

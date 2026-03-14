@@ -289,10 +289,6 @@ const ApplyToSchool = () => {
                                 <span className="text-muted-foreground">Full Name:</span>
                                 <span className="text-white font-bold">{client?.full_name}</span>
                             </div>
-                            <div className="flex justify-between items-center text-sm py-2 border-b border-white/5">
-                                <span className="text-muted-foreground">National ID:</span>
-                                <span className="text-white font-mono">{client?.national_id}</span>
-                            </div>
                             <div className="flex justify-between items-center text-sm py-2">
                                 <span className="text-muted-foreground">Current Stage:</span>
                                 <span className="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-widest">{client?.current_stage}</span>
