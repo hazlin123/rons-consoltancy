@@ -56,7 +56,7 @@ export const AdminLayout = () => {
                         animate={{ opacity: 1, x: 0 }}
                         className="p-8 pb-12 flex items-center gap-4"
                     >
-                        <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center shadow-[0_8px_20px_rgba(84,172,191,0.3)] ring-2 ring-primary/30">
+                        <div className="w-12 h-12 bg-[#003366] rounded-2xl flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.3)] ring-2 ring-white/10">
                             <img
                                 src="/logo-gold.png"
                                 alt="Ron's Consultancy"

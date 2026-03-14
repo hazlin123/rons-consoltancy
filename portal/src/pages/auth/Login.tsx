@@ -77,7 +77,7 @@ const Login = () => {
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-primary/20 rotate-3"
+                            className="w-16 h-16 bg-[#003366] rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/10 rotate-3 shadow-2xl"
                         >
                             <img src="/logo-gold.png" alt="Logo" className="w-10 h-10 object-contain" />
                         </motion.div>
