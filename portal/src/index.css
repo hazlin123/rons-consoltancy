@@ -246,7 +246,6 @@
         @apply bg-[#26658C] text-white font-bold py-3 px-4 text-xs text-left uppercase !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        color-adjust: exact !important;
     }
 
     .modern-table td {
@@ -259,11 +258,19 @@
         print-color-adjust: exact !important;
     }
 
-    /* Hide non-relevant columns for print */
-    .modern-table th:last-child,
-    .modern-table td:last-child {
+    /* Hide non-relevant columns for print to keep it minimal */
+    /* Hide Stage, Last Updated, and Actions */
+    .modern-table th:nth-child(3),
+    .modern-table td:nth-child(3),
+    .modern-table th:nth-child(4),
+    .modern-table td:nth-child(4),
+    .modern-table th:nth-child(5),
+    .modern-table td:nth-child(5) {
         display: none !important;
     }
+
+    .modern-table th:nth-child(1) { width: 50% !important; }
+    .modern-table th:nth-child(2) { width: 50% !important; }
 }
 
 .print-report-header,
